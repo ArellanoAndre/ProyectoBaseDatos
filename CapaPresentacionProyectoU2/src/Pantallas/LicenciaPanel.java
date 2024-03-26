@@ -28,6 +28,7 @@ public class LicenciaPanel extends javax.swing.JFrame {
          // Configurar la Foto
         Imagen imagen = new Imagen();
         imagen.PintarImagen(FotoGobSonora, "src\\Pantallas\\GobSonora.jpg");
+        imagen.PintarImagen(TablaCostos, "src\\Pantallas\\CostoLicencia.jpg");
     }
 
     /**
@@ -44,17 +45,12 @@ public class LicenciaPanel extends javax.swing.JFrame {
         FondoBlanco = new javax.swing.JPanel();
         FondoGris4 = new javax.swing.JPanel();
         FotoGobSonora = new javax.swing.JLabel();
-        DiscapacidadCheckBox = new javax.swing.JCheckBox();
-        btn1A = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        RFC = new javax.swing.JLabel();
-        CampoRFC = new javax.swing.JTextField();
-        Inspeccionar = new javax.swing.JButton();
-        CampoFolio = new javax.swing.JTextField();
-        Opcional = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         Cancelar = new javax.swing.JButton();
-        Opcional1 = new javax.swing.JLabel();
+        TablaCostos = new javax.swing.JLabel();
+        btn1 = new javax.swing.JButton();
+        btn2 = new javax.swing.JButton();
+        btn3 = new javax.swing.JButton();
 
         jCheckBox1.setText("jCheckBox1");
 
@@ -70,6 +66,11 @@ public class LicenciaPanel extends javax.swing.JFrame {
         FotoGobSonora.setForeground(new java.awt.Color(255, 255, 255));
         FotoGobSonora.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
+        jLabel5.setBackground(new java.awt.Color(0, 51, 51));
+        jLabel5.setFont(new java.awt.Font("Roboto", 3, 36)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Licencia ");
+
         javax.swing.GroupLayout FondoGris4Layout = new javax.swing.GroupLayout(FondoGris4);
         FondoGris4.setLayout(FondoGris4Layout);
         FondoGris4Layout.setHorizontalGroup(
@@ -77,80 +78,21 @@ public class LicenciaPanel extends javax.swing.JFrame {
             .addGroup(FondoGris4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(FotoGobSonora, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(442, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         FondoGris4Layout.setVerticalGroup(
             FondoGris4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(FondoGris4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(FotoGobSonora, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(FondoGris4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(FondoGris4Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(FotoGobSonora, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(FondoGris4Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel5)))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
-
-        DiscapacidadCheckBox.setFont(new java.awt.Font("Roboto", 3, 14)); // NOI18N
-        DiscapacidadCheckBox.setText("Discapacidad");
-        DiscapacidadCheckBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DiscapacidadCheckBoxActionPerformed(evt);
-            }
-        });
-
-        btn1A.setFont(new java.awt.Font("Roboto", 2, 14)); // NOI18N
-        btn1A.setText("1 Año");
-        btn1A.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        btn1A.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn1AActionPerformed(evt);
-            }
-        });
-
-        jButton3.setFont(new java.awt.Font("Roboto", 2, 14)); // NOI18N
-        jButton3.setText("2 Años");
-        jButton3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-
-        jButton4.setFont(new java.awt.Font("Roboto", 2, 14)); // NOI18N
-        jButton4.setText("3 Años");
-        jButton4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-
-        RFC.setBackground(new java.awt.Color(153, 153, 153));
-        RFC.setFont(new java.awt.Font("Roboto", 2, 18)); // NOI18N
-        RFC.setText("RFC");
-        RFC.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        CampoRFC.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CampoRFCActionPerformed(evt);
-            }
-        });
-
-        Inspeccionar.setBackground(new java.awt.Color(153, 153, 153));
-        Inspeccionar.setFont(new java.awt.Font("Roboto Black", 3, 12)); // NOI18N
-        Inspeccionar.setText("Inspeccionar");
-        Inspeccionar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                InspeccionarActionPerformed(evt);
-            }
-        });
-
-        CampoFolio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CampoFolioActionPerformed(evt);
-            }
-        });
-
-        Opcional.setFont(new java.awt.Font("Roboto", 2, 12)); // NOI18N
-        Opcional.setForeground(new java.awt.Color(255, 51, 51));
-        Opcional.setText("Renovar Licencia");
 
         Cancelar.setBackground(new java.awt.Color(255, 0, 0));
         Cancelar.setFont(new java.awt.Font("Roboto Black", 3, 12)); // NOI18N
@@ -161,9 +103,33 @@ public class LicenciaPanel extends javax.swing.JFrame {
             }
         });
 
-        Opcional1.setFont(new java.awt.Font("Roboto", 2, 12)); // NOI18N
-        Opcional1.setForeground(new java.awt.Color(255, 51, 51));
-        Opcional1.setText("Primera Vez");
+        TablaCostos.setBackground(new java.awt.Color(255, 255, 255));
+        TablaCostos.setForeground(new java.awt.Color(255, 255, 255));
+        TablaCostos.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        btn1.setBackground(new java.awt.Color(0, 102, 153));
+        btn1.setText("1 Año");
+        btn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn1ActionPerformed(evt);
+            }
+        });
+
+        btn2.setBackground(new java.awt.Color(0, 51, 153));
+        btn2.setText("2 Años");
+        btn2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn2ActionPerformed(evt);
+            }
+        });
+
+        btn3.setBackground(new java.awt.Color(0, 0, 153));
+        btn3.setText("3 Años");
+        btn3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout FondoBlancoLayout = new javax.swing.GroupLayout(FondoBlanco);
         FondoBlanco.setLayout(FondoBlancoLayout);
@@ -171,114 +137,67 @@ public class LicenciaPanel extends javax.swing.JFrame {
             FondoBlancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(FondoGris4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(FondoBlancoLayout.createSequentialGroup()
-                .addContainerGap()
+                .addComponent(Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(FondoBlancoLayout.createSequentialGroup()
                 .addGroup(FondoBlancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(DiscapacidadCheckBox)
-                    .addComponent(Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(FondoBlancoLayout.createSequentialGroup()
-                        .addGroup(FondoBlancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(FondoBlancoLayout.createSequentialGroup()
-                                .addGroup(FondoBlancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(FondoBlancoLayout.createSequentialGroup()
-                                        .addGap(144, 144, 144)
-                                        .addComponent(CampoFolio))
-                                    .addGroup(FondoBlancoLayout.createSequentialGroup()
-                                        .addComponent(RFC, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(CampoRFC, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(29, 29, 29))
-                            .addGroup(FondoBlancoLayout.createSequentialGroup()
-                                .addGap(30, 30, 30)
-                                .addComponent(btn1A, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(39, 39, 39)))
-                        .addGroup(FondoBlancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Inspeccionar, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(Opcional)
-                    .addComponent(Opcional1))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(130, 130, 130)
+                        .addComponent(btn1)
+                        .addGap(34, 34, 34)
+                        .addComponent(btn2)
+                        .addGap(34, 34, 34)
+                        .addComponent(btn3))
+                    .addGroup(FondoBlancoLayout.createSequentialGroup()
+                        .addGap(99, 99, 99)
+                        .addComponent(TablaCostos, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(140, Short.MAX_VALUE))
         );
         FondoBlancoLayout.setVerticalGroup(
             FondoBlancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(FondoBlancoLayout.createSequentialGroup()
                 .addComponent(FondoGris4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(Opcional)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(FondoBlancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(CampoFolio)
-                    .addComponent(Inspeccionar))
-                .addGap(1, 1, 1)
-                .addComponent(Opcional1)
-                .addGap(2, 2, 2)
-                .addGroup(FondoBlancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(RFC)
-                    .addComponent(CampoRFC, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addComponent(DiscapacidadCheckBox)
+                .addGap(41, 41, 41)
+                .addComponent(TablaCostos, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(FondoBlancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn1A, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(Cancelar)
-                .addGap(19, 19, 19))
+                    .addComponent(btn1)
+                    .addComponent(btn2)
+                    .addComponent(btn3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addComponent(Cancelar))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(FondoBlanco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(FondoBlanco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(FondoBlanco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(FondoBlanco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void DiscapacidadCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DiscapacidadCheckBoxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_DiscapacidadCheckBoxActionPerformed
-
-    private void btn1AActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn1AActionPerformed
-      ValidarLicencia licencia = new ValidarLicencia();
-      licencia.setVisible(true);
-    }//GEN-LAST:event_btn1AActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void CampoRFCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoRFCActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CampoRFCActionPerformed
-
-    private void InspeccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InspeccionarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_InspeccionarActionPerformed
-
-    private void CampoFolioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoFolioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CampoFolioActionPerformed
-
     private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed
         // Cerrar el JFrame actual
         this.dispose();
     }//GEN-LAST:event_CancelarActionPerformed
+
+    private void btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn1ActionPerformed
+
+    private void btn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn2ActionPerformed
+
+    private void btn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -316,21 +235,16 @@ public class LicenciaPanel extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField CampoFolio;
-    private javax.swing.JTextField CampoRFC;
     private javax.swing.JButton Cancelar;
-    private javax.swing.JCheckBox DiscapacidadCheckBox;
     private javax.swing.JPanel FondoBlanco;
     private javax.swing.JPanel FondoGris4;
     private javax.swing.JLabel FotoGobSonora;
-    private javax.swing.JButton Inspeccionar;
-    private javax.swing.JLabel Opcional;
-    private javax.swing.JLabel Opcional1;
-    private javax.swing.JLabel RFC;
-    private javax.swing.JButton btn1A;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JLabel TablaCostos;
+    private javax.swing.JButton btn1;
+    private javax.swing.JButton btn2;
+    private javax.swing.JButton btn3;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
+    private javax.swing.JLabel jLabel5;
     // End of variables declaration//GEN-END:variables
 }

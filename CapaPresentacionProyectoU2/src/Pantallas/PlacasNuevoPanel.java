@@ -211,8 +211,8 @@ public class PlacasNuevoPanel extends javax.swing.JFrame {
     }//GEN-LAST:event_CampoCurpActionPerformed
 
     private void AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarActionPerformed
-         PagoGeneradoPlacasPanel placas = new PagoGeneradoPlacasPanel();
-        placas.setVisible(true);
+        ValidarLicencia validar = new ValidarLicencia();
+        validar.setVisible(true);
     }//GEN-LAST:event_AceptarActionPerformed
 
     private void CampoCurp2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoCurp2ActionPerformed

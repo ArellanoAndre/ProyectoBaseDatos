@@ -226,6 +226,8 @@ public class PlacasUsadoPanel extends javax.swing.JFrame {
 
     private void Aceptar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Aceptar3ActionPerformed
         this.dispose();
+        ValidarLicencia validar = new ValidarLicencia();
+        validar.setVisible(true);
     }//GEN-LAST:event_Aceptar3ActionPerformed
 
     private void CampoCurp1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoCurp1ActionPerformed

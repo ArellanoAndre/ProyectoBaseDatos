@@ -41,8 +41,8 @@ public class PlacasPanel extends javax.swing.JFrame {
         FondoGris4 = new javax.swing.JPanel();
         FotoGobSonora = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        Nuevo = new javax.swing.JLabel();
+        Usado = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         Cancelar = new javax.swing.JButton();
 
@@ -90,23 +90,23 @@ public class PlacasPanel extends javax.swing.JFrame {
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
-        jLabel1.setBackground(new java.awt.Color(0, 51, 204));
-        jLabel1.setFont(new java.awt.Font("Roboto", 2, 18)); // NOI18N
-        jLabel1.setText("Nuevo");
-        jLabel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+        Nuevo.setBackground(new java.awt.Color(0, 51, 204));
+        Nuevo.setFont(new java.awt.Font("Roboto", 2, 18)); // NOI18N
+        Nuevo.setText("Nuevo");
+        Nuevo.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        Nuevo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel1MouseClicked(evt);
+                NuevoMouseClicked(evt);
             }
         });
 
-        jLabel2.setBackground(new java.awt.Color(51, 51, 255));
-        jLabel2.setFont(new java.awt.Font("Roboto", 2, 18)); // NOI18N
-        jLabel2.setText("Usado");
-        jLabel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+        Usado.setBackground(new java.awt.Color(51, 51, 255));
+        Usado.setFont(new java.awt.Font("Roboto", 2, 18)); // NOI18N
+        Usado.setText("Usado");
+        Usado.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        Usado.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel2MouseClicked(evt);
+                UsadoMouseClicked(evt);
             }
         });
 
@@ -134,9 +134,9 @@ public class PlacasPanel extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(59, 59, 59)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Usado, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Nuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(101, 101, 101))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -151,8 +151,8 @@ public class PlacasPanel extends javax.swing.JFrame {
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Usado, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Nuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(55, 55, 55)
                 .addComponent(Cancelar)
                 .addGap(17, 17, 17))
@@ -177,17 +177,17 @@ public class PlacasPanel extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_CancelarActionPerformed
 
-    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+    private void UsadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UsadoMouseClicked
         // TODO add your handling code here:
         PlacasUsadoPanel usado = new PlacasUsadoPanel();
         usado.setVisible(true);
-    }//GEN-LAST:event_jLabel2MouseClicked
+    }//GEN-LAST:event_UsadoMouseClicked
 
-    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+    private void NuevoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NuevoMouseClicked
         // TODO add your handling code here:
         PlacasNuevoPanel nuevo = new PlacasNuevoPanel();
         nuevo.setVisible(true);
-    }//GEN-LAST:event_jLabel1MouseClicked
+    }//GEN-LAST:event_NuevoMouseClicked
 
     /**
      * @param args the command line arguments
@@ -229,8 +229,8 @@ public class PlacasPanel extends javax.swing.JFrame {
     private javax.swing.JButton Cancelar;
     private javax.swing.JPanel FondoGris4;
     private javax.swing.JLabel FotoGobSonora;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel Nuevo;
+    private javax.swing.JLabel Usado;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
