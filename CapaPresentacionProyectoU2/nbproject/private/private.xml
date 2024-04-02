@@ -3,13 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Arell/OneDrive/Documentos/NetBeansProjects/BaseDeDatosAvanzada/CapaPresentacionProyectoU2/src/Pantallas/PlacasUsadoPanel.java</file>
-            <file>file:/C:/Users/Arell/OneDrive/Documentos/NetBeansProjects/BaseDeDatosAvanzada/CapaPresentacionProyectoU2/src/Pantallas/PlacasPanel.java</file>
-            <file>file:/C:/Users/Arell/OneDrive/Documentos/NetBeansProjects/BaseDeDatosAvanzada/CapaPresentacionProyectoU2/src/Pantallas/PlacasNuevoPanel.java</file>
-            <file>file:/C:/Users/Arell/OneDrive/Documentos/NetBeansProjects/BaseDeDatosAvanzada/CapaPresentacionProyectoU2/src/Pantallas/ConsultaPanel.java</file>
-            <file>file:/C:/Users/Arell/OneDrive/Documentos/NetBeansProjects/BaseDeDatosAvanzada/CapaPresentacionProyectoU2/src/Pantallas/ReportePanel.java</file>
-            <file>file:/C:/Users/Arell/OneDrive/Documentos/NetBeansProjects/BaseDeDatosAvanzada/CapaPresentacionProyectoU2/src/Pantallas/InicioMenuPanel.java</file>
-            <file>file:/C:/Users/Arell/OneDrive/Documentos/NetBeansProjects/BaseDeDatosAvanzada/CapaPresentacionProyectoU2/src/Pantallas/ValidarLicencia.java</file>
+            <file>file:/C:/Users/Arell/OneDrive/Documentos/NetBeansProjects/BaseDeDatosAvanzada/CapaPresentacionProyectoU2/src/Frames/InicioMenuPanel.java</file>
+            <file>file:/C:/Users/Arell/OneDrive/Documentos/NetBeansProjects/BaseDeDatosAvanzada/CapaPresentacionProyectoU2/src/Frames/CostosLicenciaAuto.java</file>
+            <file>file:/C:/Users/Arell/OneDrive/Documentos/NetBeansProjects/BaseDeDatosAvanzada/CapaPresentacionProyectoU2/src/Frames/ValidarLicencia.java</file>
+            <file>file:/C:/Users/Arell/OneDrive/Documentos/NetBeansProjects/BaseDeDatosAvanzada/CapaPresentacionProyectoU2/src/Frames/IdentificacionLicencia.java</file>
+            <file>file:/C:/Users/Arell/OneDrive/Documentos/NetBeansProjects/BaseDeDatosAvanzada/CapaPresentacionProyectoU2/src/Frames/PlacasUsadoPanel.java</file>
+            <file>file:/C:/Users/Arell/OneDrive/Documentos/NetBeansProjects/BaseDeDatosAvanzada/CapaPresentacionProyectoU2/src/Frames/PlacasNuevoPanel.java</file>
+            <file>file:/C:/Users/Arell/OneDrive/Documentos/NetBeansProjects/BaseDeDatosAvanzada/CapaPresentacionProyectoU2/src/Frames/CostosPlacas.java</file>
+            <file>file:/C:/Users/Arell/OneDrive/Documentos/NetBeansProjects/BaseDeDatosAvanzada/CapaPresentacionProyectoU2/src/Frames/ConsultaPanel.java</file>
+            <file>file:/C:/Users/Arell/OneDrive/Documentos/NetBeansProjects/BaseDeDatosAvanzada/CapaPresentacionProyectoU2/src/Frames/ReportePanel.java</file>
+            <file>file:/C:/Users/Arell/OneDrive/Documentos/NetBeansProjects/BaseDeDatosAvanzada/CapaPresentacionProyectoU2/src/Frames/PlacasPanel.java</file>
         </group>
     </open-files>
 </project-private>
