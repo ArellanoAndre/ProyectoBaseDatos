@@ -38,19 +38,39 @@ public class PlacasPanel extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel4 = new javax.swing.JLabel();
+        Aceptar2 = new javax.swing.JButton();
+        Aceptar3 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         FondoGris4 = new javax.swing.JPanel();
         FotoGobSonora = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        Nuevo = new javax.swing.JLabel();
-        Usado = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         Cancelar = new javax.swing.JButton();
+        btnNuevo = new javax.swing.JButton();
+        btnUsado = new javax.swing.JButton();
 
         jLabel4.setBackground(new java.awt.Color(0, 51, 51));
         jLabel4.setFont(new java.awt.Font("Roboto", 3, 36)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Datos del Automovil");
+
+        Aceptar2.setBackground(new java.awt.Color(102, 0, 204));
+        Aceptar2.setFont(new java.awt.Font("Roboto Black", 3, 12)); // NOI18N
+        Aceptar2.setText("Nuevo");
+        Aceptar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Aceptar2ActionPerformed(evt);
+            }
+        });
+
+        Aceptar3.setBackground(new java.awt.Color(51, 0, 204));
+        Aceptar3.setFont(new java.awt.Font("Roboto Black", 3, 12)); // NOI18N
+        Aceptar3.setText("Usado");
+        Aceptar3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Aceptar3ActionPerformed(evt);
+            }
+        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -91,26 +111,6 @@ public class PlacasPanel extends javax.swing.JFrame {
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
-        Nuevo.setBackground(new java.awt.Color(0, 51, 204));
-        Nuevo.setFont(new java.awt.Font("Roboto", 2, 18)); // NOI18N
-        Nuevo.setText("Nuevo");
-        Nuevo.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        Nuevo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                NuevoMouseClicked(evt);
-            }
-        });
-
-        Usado.setBackground(new java.awt.Color(51, 51, 255));
-        Usado.setFont(new java.awt.Font("Roboto", 2, 18)); // NOI18N
-        Usado.setText("Usado");
-        Usado.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        Usado.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                UsadoMouseClicked(evt);
-            }
-        });
-
         jLabel3.setBackground(new java.awt.Color(204, 204, 204));
         jLabel3.setFont(new java.awt.Font("Roboto", 2, 24)); // NOI18N
         jLabel3.setText("Selecciona el tipo de Carro");
@@ -124,37 +124,56 @@ public class PlacasPanel extends javax.swing.JFrame {
             }
         });
 
+        btnNuevo.setBackground(new java.awt.Color(102, 0, 204));
+        btnNuevo.setFont(new java.awt.Font("Roboto Black", 3, 12)); // NOI18N
+        btnNuevo.setText("Nuevo");
+        btnNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNuevoActionPerformed(evt);
+            }
+        });
+
+        btnUsado.setBackground(new java.awt.Color(51, 0, 204));
+        btnUsado.setFont(new java.awt.Font("Roboto Black", 3, 12)); // NOI18N
+        btnUsado.setText("Usado");
+        btnUsado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUsadoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(FondoGris4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(138, 138, 138))
-            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(100, 100, 100)
-                .addComponent(Usado, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnUsado, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(Nuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(111, 111, 111))
+                .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(121, 121, 121))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(196, 196, 196)
+                        .addComponent(jLabel3)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(FondoGris4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(69, 69, 69)
+                .addGap(47, 47, 47)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(58, 58, 58)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Usado, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Nuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 131, Short.MAX_VALUE)
+                    .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnUsado, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 152, Short.MAX_VALUE)
                 .addComponent(Cancelar)
                 .addGap(17, 17, 17))
         );
@@ -174,22 +193,29 @@ public class PlacasPanel extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void Aceptar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Aceptar2ActionPerformed
+        //        CostosLicenciaAuto licencia = new CostosLicenciaAuto();
+        //      licencia.setVisible(true);
+    }//GEN-LAST:event_Aceptar2ActionPerformed
+
+    private void Aceptar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Aceptar3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Aceptar3ActionPerformed
+
+    private void btnUsadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsadoActionPerformed
+        PlacasUsadoPanel usado = new PlacasUsadoPanel();
+        usado.setVisible(true);
+    }//GEN-LAST:event_btnUsadoActionPerformed
+
+    private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
+        PlacasNuevoPanel nuevo = new PlacasNuevoPanel();
+        nuevo.setVisible(true);
+    }//GEN-LAST:event_btnNuevoActionPerformed
+
     private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed
         // Cerrar el JFrame actual
         this.dispose();
     }//GEN-LAST:event_CancelarActionPerformed
-
-    private void UsadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UsadoMouseClicked
-        // TODO add your handling code here:
-        PlacasUsadoPanel usado = new PlacasUsadoPanel();
-        usado.setVisible(true);
-    }//GEN-LAST:event_UsadoMouseClicked
-
-    private void NuevoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NuevoMouseClicked
-        // TODO add your handling code here:
-        PlacasNuevoPanel nuevo = new PlacasNuevoPanel();
-        nuevo.setVisible(true);
-    }//GEN-LAST:event_NuevoMouseClicked
 
     /**
      * @param args the command line arguments
@@ -228,11 +254,13 @@ public class PlacasPanel extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Aceptar2;
+    private javax.swing.JButton Aceptar3;
     private javax.swing.JButton Cancelar;
     private javax.swing.JPanel FondoGris4;
     private javax.swing.JLabel FotoGobSonora;
-    private javax.swing.JLabel Nuevo;
-    private javax.swing.JLabel Usado;
+    private javax.swing.JButton btnNuevo;
+    private javax.swing.JButton btnUsado;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
