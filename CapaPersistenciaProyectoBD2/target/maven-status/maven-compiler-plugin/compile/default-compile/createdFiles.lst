@@ -1,0 +1,6 @@
+DAO\PersonaDAO.class
+DAO\TramiteLicenciaDAO.class
+DAO\ITramite.class
+DAO\IVehiculo.class
+DAO\TramiteVehiculoDAO.class
+DAO\IPersona.class
