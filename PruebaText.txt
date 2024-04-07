@@ -1,0 +1,10 @@
+
+public void Prueba Metodo(
+Arellano Alvarez 
+return no tocar
+)
+
+publici void pruebaMetodo2(){
+Carlos Rios
+return no tocar
+}
