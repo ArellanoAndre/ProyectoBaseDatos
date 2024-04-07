@@ -5,6 +5,7 @@
 package DAO;
 
 import DAO.Interface.ITramite;
+import JPA.LicenciaEntidad;
 
 /**
  *
@@ -18,12 +19,12 @@ public class TramiteVehiculoDAO implements ITramite{
     }
 
     @Override
-    public void Validar() {
+    public void CambiarEstado() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public void CambiarEstado() {
+    public LicenciaEntidad Validar() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     

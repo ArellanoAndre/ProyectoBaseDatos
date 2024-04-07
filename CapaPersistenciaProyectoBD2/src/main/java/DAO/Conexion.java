@@ -5,6 +5,9 @@
 package DAO;
 
 import DAO.Interface.IConexion;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 /**
  *
@@ -12,9 +15,22 @@ import DAO.Interface.IConexion;
  */
 public class Conexion implements IConexion{
 
-    @Override
-    public void EstablecerConexion() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
     
+    /**
+     * Obtiene una conexión a la base de datos utilizando JPA (Java Persistence
+     * API).
+     *
+     * @return Una instancia de EntityManager que representa la conexión a la
+     * base de datos.
+     */
+    @Override
+    public EntityManager EstablecerConexion() {
+        //obtenemos acceso a la fabrica de entitymanagers
+        EntityManagerFactory emFactory = Persistence.createEntityManagerFactory("AgenciaFiscalPU");
+        //solicitamos una entity manager (acceso a la bd)
+        EntityManager entityManager = emFactory.createEntityManager();
+
+        return entityManager;
+    }
+
 }

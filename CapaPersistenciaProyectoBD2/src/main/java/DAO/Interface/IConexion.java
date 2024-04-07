@@ -4,12 +4,21 @@
  */
 package DAO.Interface;
 
+import javax.persistence.EntityManager;
+
 /**
  *
  * @author Arell
  */
 public interface IConexion {
     
-    public void EstablecerConexion();
+    /**
+     * Obtiene una conexión a la base de datos a través de un EntityManager.
+     *
+     * @return La conexión a la base de datos.
+     */
+
+
+    public EntityManager EstablecerConexion();
     
 }

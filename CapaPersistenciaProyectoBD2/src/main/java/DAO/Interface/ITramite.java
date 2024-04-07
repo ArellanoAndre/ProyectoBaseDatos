@@ -4,15 +4,18 @@
  */
 package DAO.Interface;
 
+import JPA.LicenciaEntidad;
+
 /**
  *
  * @author Arell
  */
 public interface ITramite {
     
+    
 public void CalcularCosto();
 
-public void Validar();
+public LicenciaEntidad Validar();
 
 public void CambiarEstado();
 
