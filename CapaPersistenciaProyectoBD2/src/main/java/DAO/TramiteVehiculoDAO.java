@@ -4,6 +4,8 @@
  */
 package DAO;
 
+import DAO.Interface.ITramite;
+
 /**
  *
  * @author Arell

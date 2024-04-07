@@ -4,27 +4,23 @@
  */
 package DAO;
 
-import DAO.Interface.ITramite;
+import DAO.Interface.IReporte;
 
 /**
  *
  * @author Arell
  */
-public class TramiteLicenciaDAO implements ITramite {
+public class ReporteDAO implements IReporte{
 
     @Override
-    public void CalcularCosto() {
+    public void GenerarReportePDF() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public void Validar() {
+    public void BuscarPeriodo() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-
-    @Override
-    public void CambiarEstado() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+    
     
 }

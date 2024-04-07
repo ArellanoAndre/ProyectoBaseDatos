@@ -4,7 +4,7 @@
  */
 package DAO;
 
-import DAO.IPersona;
+import DAO.Interface.IPersona;
 
 /**
  *
@@ -29,6 +29,16 @@ public class PersonaDAO implements IPersona {
 
     @Override
     public void BuscarPorAñoNacimiento() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void VerHistorial() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void AgregarPersona() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     

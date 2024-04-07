@@ -1,6 +1,10 @@
-DAO\PersonaDAO.class
+DAO\Interface\IConexion.class
+DAO\Interface\IVehiculo.class
 DAO\TramiteLicenciaDAO.class
-DAO\ITramite.class
-DAO\IVehiculo.class
+DAO\Interface\IReporte.class
 DAO\TramiteVehiculoDAO.class
-DAO\IPersona.class
+DAO\ReporteDAO.class
+DAO\Interface\ITramite.class
+DAO\Conexion.class
+DAO\PersonaDAO.class
+DAO\Interface\IPersona.class
