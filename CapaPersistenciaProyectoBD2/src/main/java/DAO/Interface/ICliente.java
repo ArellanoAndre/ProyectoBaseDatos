@@ -11,7 +11,7 @@ import java.util.List;
  *
  * @author Arell
  */
-public interface IPersona {
+public interface ICliente {
     
    public List<ClienteEntidad> BuscarTodos();
     

@@ -5,18 +5,18 @@
 package DAO;
 
 import DAO.Interface.IConexion;
-import DAO.Interface.IPersona;
 import JPA.ClienteEntidad;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
+import DAO.Interface.ICliente;
 
 /**
  *
  * @author Arell
  */
-public class ClienteDAO implements IPersona {
+public class ClienteDAO implements ICliente {
     //Atributo de clase Tipo Iconexion 
 private IConexion conexion;
 

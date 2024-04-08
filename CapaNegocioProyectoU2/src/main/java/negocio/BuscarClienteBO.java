@@ -2,46 +2,40 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package DAO;
+package negocio;
 
-import DAO.Interface.IPersona;
+import interfaces.IBuscarClienteBO;
+import java.util.List;
 
 /**
  *
- * @author Arell
+ * @author Usuario
  */
-public class PersonaDAO implements IPersona {
+public class BuscarClienteBO implements IBuscarClienteBO{
 
     @Override
-    public void BuscarPorRFC() {
+    public List<ClienteEntidad> BuscarTodos() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public void BuscarPorNombre() {
+    public ClienteEntidad BuscarPorRFC(String rfc) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public void BuscarPorApellido() {
+    public List<ClienteEntidad> BuscarPorNombre(String nombre) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public void BuscarPorAñoNacimiento() {
+    public List<ClienteEntidad> BuscarPorApellido(String apellido) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public void VerHistorial() {
+    public List<ClienteEntidad> BuscarPorAñoNacimiento(int año) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-
-    @Override
-    public void AgregarPersona() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-    
-    
     
 }

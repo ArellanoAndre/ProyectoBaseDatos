@@ -2,18 +2,17 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
  */
-package DAO;
+package interfaces;
 
 /**
  *
- * @author Arell
+ * @author Usuario
  */
-public interface IVehiculo {
-    
-public void RegistrarAuto();
-    
-public void BuscarPlacas();
+public interface IAdministrarTramiteBO {
 
-public void BuscarNumeroSerie();
+    public void CalcularCosto();
 
+    public LicenciaEntidad Validar();
+
+    public void CambiarEstado();
 }
