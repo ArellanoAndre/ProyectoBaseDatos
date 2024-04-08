@@ -17,7 +17,7 @@ JPA\CostoEntidad.class
 JPA\Enum\EstadoLicencia.class
 DAO\Interface\ITramite.class
 DAO\Conexion.class
-DAO\PersonaDAO.class
 JPA\AutoMovilEntidad.class
+DAO\ClienteDAO.class
 JPA\CostoPlacasEntidad.class
 JPA\TramiteEntidad.class

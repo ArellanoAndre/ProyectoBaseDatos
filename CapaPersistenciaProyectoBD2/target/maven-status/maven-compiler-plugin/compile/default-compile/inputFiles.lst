@@ -6,6 +6,7 @@ C:\Users\Arell\OneDrive\Documentos\NetBeansProjects\ProgramacionIII3\CapaPersist
 C:\Users\Arell\OneDrive\Documentos\NetBeansProjects\ProgramacionIII3\CapaPersistenciaProyectoBD2\src\main\java\DAO\VehiculoDAO.java
 C:\Users\Arell\OneDrive\Documentos\NetBeansProjects\ProgramacionIII3\CapaPersistenciaProyectoBD2\src\main\java\JPA\Enum\EstadoVehiculo.java
 C:\Users\Arell\OneDrive\Documentos\NetBeansProjects\ProgramacionIII3\CapaPersistenciaProyectoBD2\src\main\java\JPA\PlacaEntidad.java
+C:\Users\Arell\OneDrive\Documentos\NetBeansProjects\ProgramacionIII3\CapaPersistenciaProyectoBD2\src\main\java\DAO\ClienteDAO.java
 C:\Users\Arell\OneDrive\Documentos\NetBeansProjects\ProgramacionIII3\CapaPersistenciaProyectoBD2\src\main\java\DAO\ReporteDAO.java
 C:\Users\Arell\OneDrive\Documentos\NetBeansProjects\ProgramacionIII3\CapaPersistenciaProyectoBD2\src\main\java\DAO\TramiteLicenciaDAO.java
 C:\Users\Arell\OneDrive\Documentos\NetBeansProjects\ProgramacionIII3\CapaPersistenciaProyectoBD2\src\main\java\DAO\Interface\ITramite.java
@@ -14,7 +15,6 @@ C:\Users\Arell\OneDrive\Documentos\NetBeansProjects\ProgramacionIII3\CapaPersist
 C:\Users\Arell\OneDrive\Documentos\NetBeansProjects\ProgramacionIII3\CapaPersistenciaProyectoBD2\src\main\java\JPA\VehiculoEntidad.java
 C:\Users\Arell\OneDrive\Documentos\NetBeansProjects\ProgramacionIII3\CapaPersistenciaProyectoBD2\src\main\java\JPA\CostoEntidad.java
 C:\Users\Arell\OneDrive\Documentos\NetBeansProjects\ProgramacionIII3\CapaPersistenciaProyectoBD2\src\main\java\JPA\Enum\EstadoPlaca.java
-C:\Users\Arell\OneDrive\Documentos\NetBeansProjects\ProgramacionIII3\CapaPersistenciaProyectoBD2\src\main\java\DAO\PersonaDAO.java
 C:\Users\Arell\OneDrive\Documentos\NetBeansProjects\ProgramacionIII3\CapaPersistenciaProyectoBD2\src\main\java\JPA\TramiteEntidad.java
 C:\Users\Arell\OneDrive\Documentos\NetBeansProjects\ProgramacionIII3\CapaPersistenciaProyectoBD2\src\main\java\DAO\TramiteVehiculoDAO.java
 C:\Users\Arell\OneDrive\Documentos\NetBeansProjects\ProgramacionIII3\CapaPersistenciaProyectoBD2\src\main\java\JPA\LicenciaEntidad.java

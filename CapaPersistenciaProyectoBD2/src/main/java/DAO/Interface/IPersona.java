@@ -4,23 +4,28 @@
  */
 package DAO.Interface;
 
+import JPA.ClienteEntidad;
+import java.util.List;
+
 /**
  *
  * @author Arell
  */
 public interface IPersona {
     
-   public void BuscarPorRFC();
+   public List<ClienteEntidad> BuscarTodos();
+    
+   public ClienteEntidad BuscarPorRFC(String rfc);
    
-   public void BuscarPorNombre();
+   public List<ClienteEntidad> BuscarPorNombre(String nombre);
    
-   public void BuscarPorApellido();
+   public List<ClienteEntidad> BuscarPorApellido(String apellido);
    
-   public void BuscarPorAñoNacimiento();
+   public List<ClienteEntidad> BuscarPorAñoNacimiento(int año);
    
    public void VerHistorial();
    
-   public void AgregarPersona();
+   public ClienteEntidad AgregarPersona(ClienteEntidad cliente);
    
     
 }

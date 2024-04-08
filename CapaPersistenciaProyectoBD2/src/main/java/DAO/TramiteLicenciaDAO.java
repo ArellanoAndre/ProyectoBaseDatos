@@ -6,21 +6,24 @@ package DAO;
 
 import DAO.Interface.IConexion;
 import DAO.Interface.ITramite;
+import JPA.Enum.EstadoLicencia;
 import JPA.LicenciaEntidad;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 
 /**
  *
  * @author Arell
  */
 public class TramiteLicenciaDAO implements ITramite {
-    
+//Atributo de clase Tipo Iconexion 
 private IConexion conexion;
+
     @Override
     public void CalcularCosto() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-//
+
 //    @Override
 //    public LicenciaEntidad Validar() {
 //EntityManager entityManager = conexion.EstablecerConexion();
@@ -29,13 +32,11 @@ private IConexion conexion;
 //        entityManager.close();
 //        return licencia;   
 //    }
-
-    @Override
-    public void CambiarEstado() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-    
-    
+//
+//    @Override
+//    public void CambiarEstado(LicenciaEntidad licencia, EstadoLicencia nuevoEstado) {}
+//    
+//    
     public LicenciaEntidad agregar(LicenciaEntidad licencia) {
         EntityManager entityManager = conexion.EstablecerConexion();
         entityManager.getTransaction().begin();
@@ -51,6 +52,11 @@ private IConexion conexion;
 
     @Override
     public LicenciaEntidad Validar() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void CambiarEstado() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }
