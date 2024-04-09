@@ -6,6 +6,7 @@ package Frames;
 
 import Tools.Imagen;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -19,12 +20,8 @@ public class CostosPlacas extends javax.swing.JFrame {
     public CostosPlacas() {
           initComponents();
         //Configurar Tamaño JFrame
-        setTitle("Ventana de Licencas");
+        setTitle("Ventana de Costos Placas");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-         //Configurar Tamaño JFrame
-        setTitle("Licencia ");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-     
          // Configurar la Foto
         Imagen imagen = new Imagen();
         imagen.PintarImagen(FotoGobSonora, "src\\Pantallas\\GobSonora.jpg");
@@ -180,8 +177,10 @@ public class CostosPlacas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void Aceptar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Aceptar1ActionPerformed
-        //        CostosLicencia licencia = new CostosLicencia();
-        //        licencia.setVisible(true);
+        InicioMenuPanel inicio = new InicioMenuPanel();
+        inicio.setVisible(true);this.dispose();
+        JOptionPane.showMessageDialog(this, "El Tramite se realizo correctamente.", "Transacción Exitosa", JOptionPane.INFORMATION_MESSAGE);
+
     }//GEN-LAST:event_Aceptar1ActionPerformed
 
     private void Cancelar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cancelar1ActionPerformed

@@ -7,6 +7,7 @@ package Frames;
 import Frames.HistorialPanel;
 import Tools.Imagen;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -21,7 +22,7 @@ public class InicioMenuPanel extends javax.swing.JFrame {
       initComponents();
        
         //Configurar Tamaño JFrame
-        setTitle("Inicio Menu");
+        setTitle("Ventana Principal Inicio Menu");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       //  setSize(800, 600);
          // Configurar la Foto
@@ -147,6 +148,11 @@ public class InicioMenuPanel extends javax.swing.JFrame {
         jPanel3.add(Historial, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 140, 107, 77));
 
         FotoSitio.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        FotoSitio.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                FotoSitioMouseClicked(evt);
+            }
+        });
         jPanel3.add(FotoSitio, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 640, 160));
 
         jLabel5.setBackground(new java.awt.Color(204, 204, 204));
@@ -210,6 +216,11 @@ public class InicioMenuPanel extends javax.swing.JFrame {
         ReportePanel reporte = new ReportePanel();
        reporte.setVisible(true);
     }//GEN-LAST:event_ReportesMouseClicked
+
+    private void FotoSitioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FotoSitioMouseClicked
+        JOptionPane.showMessageDialog(this, "La Insercion de Datos se realizo correctamente.", "Transacción Exitosa", JOptionPane.INFORMATION_MESSAGE);
+
+    }//GEN-LAST:event_FotoSitioMouseClicked
 
     /**
      * @param args the command line arguments

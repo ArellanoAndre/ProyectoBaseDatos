@@ -20,7 +20,7 @@ public class PlacasPanel extends javax.swing.JFrame {
     public PlacasPanel() {
         initComponents();
         //Configurar Tamaño JFrame
-        setTitle("Ventana de solicitud para Placas");
+        setTitle("Ventana de Seleccion Tipo de Transporte");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         // Configurar la Foto
         Imagen imagen = new Imagen();

@@ -19,7 +19,7 @@ public class HistorialPanel extends javax.swing.JFrame {
     public HistorialPanel() {
         initComponents();
         //Configurar Tamaño JFrame
-        setTitle("Ventana de Consultas");
+        setTitle("Ventana de Consultas Historial");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                  // Configurar la Foto
         Imagen imagen = new Imagen();

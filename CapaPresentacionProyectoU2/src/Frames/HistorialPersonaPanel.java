@@ -4,6 +4,9 @@
  */
 package Frames;
 
+import Tools.Imagen;
+import javax.swing.JFrame;
+
 /**
  *
  * @author Arell
@@ -15,6 +18,13 @@ public class HistorialPersonaPanel extends javax.swing.JFrame {
      */
     public HistorialPersonaPanel() {
         initComponents();
+        //Configurar Tamaño JFrame
+        setTitle("Ventana de Historial Personal");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                 // Configurar la Foto
+        Imagen imagen = new Imagen();
+        imagen.PintarImagen(FotoGobSonora, "src\\Pantallas\\GobSonora.jpg");
+
     }
 
     /**

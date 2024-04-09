@@ -6,6 +6,7 @@ package Frames;
 
 import Tools.Imagen;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -19,7 +20,7 @@ public class DatosLicencia extends javax.swing.JFrame {
     public DatosLicencia() {
            initComponents();
         //Configurar Tamaño JFrame
-        setTitle("ventana  ");
+        setTitle("ventana de Datos Licencia  ");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
          // Configurar la Foto
         Imagen imagen = new Imagen();
@@ -230,6 +231,7 @@ public class DatosLicencia extends javax.swing.JFrame {
 
     private void Aceptar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Aceptar1ActionPerformed
         // TODO add your handling code here:
+        JOptionPane.showMessageDialog(this, "La Inspeccion se realizo correctamente.", "Transacción Exitosa", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_Aceptar1ActionPerformed
 
     /**
