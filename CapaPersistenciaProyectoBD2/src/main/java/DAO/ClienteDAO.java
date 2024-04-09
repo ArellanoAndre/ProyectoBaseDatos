@@ -11,6 +11,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import DAO.Interface.ICliente;
+import JPA.TramiteEntidad;
 
 /**
  *
@@ -19,11 +20,10 @@ import DAO.Interface.ICliente;
 public class ClienteDAO implements ICliente {
     //Atributo de clase Tipo Iconexion 
 private IConexion conexion;
+EntityManager entityManager = conexion.EstablecerConexion();
 
     @Override
     public ClienteEntidad BuscarPorRFC(String rfc) {
-          EntityManager entityManager = conexion.EstablecerConexion();
-
         Query query = entityManager.createNativeQuery("SELECT * FROM Clientes where rfc = ?", ClienteEntidad.class);
         query.setParameter(1, rfc);
 
@@ -37,7 +37,6 @@ private IConexion conexion;
 
     @Override
     public List<ClienteEntidad> BuscarPorNombre(String nombre) {
-          EntityManager entityManager = conexion.EstablecerConexion();
     entityManager.getTransaction().begin();
 
     StringBuilder jpqlBuilder = new StringBuilder("SELECT c FROM Cliente c WHERE c.nombre LIKE :nombre");
@@ -53,8 +52,7 @@ private IConexion conexion;
 
     @Override
     public List<ClienteEntidad> BuscarPorApellido(String apellido) {
-       EntityManager entityManager = conexion.EstablecerConexion();
-    entityManager.getTransaction().begin();
+   entityManager.getTransaction().begin();
 
     StringBuilder jpqlBuilder = new StringBuilder("SELECT c FROM Cliente c WHERE c.apellido LIKE :apellido");
     TypedQuery<ClienteEntidad> query = entityManager.createQuery(jpqlBuilder.toString(), ClienteEntidad.class);
@@ -69,7 +67,6 @@ private IConexion conexion;
 
     @Override
     public List<ClienteEntidad> BuscarPorAñoNacimiento(int año) {
-        EntityManager entityManager = conexion.EstablecerConexion();
     entityManager.getTransaction().begin();
 
     StringBuilder jpqlBuilder = new StringBuilder("SELECT c FROM Cliente c WHERE YEAR(c.fecha_nacimiento) = :año");
@@ -84,14 +81,22 @@ private IConexion conexion;
     return clientes; }
 
     @Override
-    public void VerHistorial() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+    public  List<TramiteEntidad> VerHistorial(ClienteEntidad cliente) {
+           try {
+            TypedQuery<TramiteEntidad> query = entityManager.createQuery(
+                    "SELECT t FROM TramiteEntidad t WHERE t.cliente = :cliente", TramiteEntidad.class);
+            query.setParameter("cliente", cliente);
+            return query.getResultList();
+        } finally {
+            if (entityManager != null) {
+                entityManager.close();
+            }
+        }
+    } 
+    
     @Override
     public ClienteEntidad AgregarPersona(ClienteEntidad cliente) {
-    EntityManager entityManager = conexion.EstablecerConexion();
-
-        entityManager.getTransaction().begin();
+    entityManager.getTransaction().begin();
         entityManager.persist(cliente);
 
         entityManager.getTransaction().commit();
@@ -100,7 +105,6 @@ private IConexion conexion;
 
     @Override
     public List<ClienteEntidad> BuscarTodos() {
-        EntityManager entityManager = conexion.EstablecerConexion();
         entityManager.getTransaction().begin();
         TypedQuery<ClienteEntidad> query = entityManager.createQuery(
                 "", ClienteEntidad.class);

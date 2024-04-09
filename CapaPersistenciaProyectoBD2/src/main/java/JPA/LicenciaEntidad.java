@@ -1,6 +1,6 @@
 package JPA;
 
-import JPA.Enum.EstadoLicencia;
+import JPA.Enum.EstadosJPA;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -30,7 +30,7 @@ public class LicenciaEntidad extends TramiteEntidad implements Serializable {
 
     @Column(name = "estado", nullable = false)
     @Enumerated(EnumType.STRING)
-    private EstadoLicencia estado;
+    private EstadosJPA estado;
 
     @ManyToOne(targetEntity = CostoLicenciasEntidad.class)
     @JoinColumn(name = "id_costo", nullable = false)
@@ -62,11 +62,11 @@ public class LicenciaEntidad extends TramiteEntidad implements Serializable {
         this.vigencia = vigencia;
     }
 
-    public EstadoLicencia getEstado() {
+    public EstadosJPA getEstado() {
         return estado;
     }
 
-    public void setEstado(EstadoLicencia estado) {
+    public void setEstado(EstadosJPA estado) {
         this.estado = estado;
     }
 

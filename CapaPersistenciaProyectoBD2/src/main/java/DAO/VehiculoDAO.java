@@ -4,74 +4,67 @@
  */
 package DAO;
 
+import DAO.Interface.IConexion;
 import DAO.Interface.IVehiculo;
+import JPA.PlacaEntidad;
+import JPA.VehiculoEntidad;
+import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 
 /**
  *
  * @author Arell
  */
 public class VehiculoDAO implements IVehiculo {
+      //Atributo de clase Tipo Iconexion 
+private IConexion conexion;
+EntityManager entityManager = conexion.EstablecerConexion();
 
     @Override
-    public void RegistrarAuto() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public PlacaEntidad BuscarPlacas(String numero) {
+    EntityManager entityManager = null;
+        try {
+            entityManager = conexion.EstablecerConexion();
+            TypedQuery<PlacaEntidad> query = entityManager.createQuery(
+                    "SELECT p FROM PlacaEntidad p WHERE p.numero = :numero", PlacaEntidad.class);
+            query.setParameter("numero", numero);
+            List<PlacaEntidad> resultados = query.getResultList();
+            return resultados.isEmpty() ? null : resultados.get(0);
+        } finally {
+            if (entityManager != null) {
+                entityManager.close();
+            }
+        }
     }
-
-    @Override
-    public void BuscarPlacas() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+@Override
+    public VehiculoEntidad BuscarNumeroSerie(Long id) {
+        try {
+            TypedQuery<VehiculoEntidad> query = entityManager.createQuery(
+                    "SELECT v FROM VehiculoEntidad v WHERE v.id = :id", VehiculoEntidad.class);
+            query.setParameter("id", id);
+            List<VehiculoEntidad> resultados = query.getResultList();
+            return resultados.isEmpty() ? null : resultados.get(0);
+        } finally {
+            if (entityManager != null) {
+                entityManager.close();
+            }
+        }
     }
-//     @Override
-//    public Vehiculo consultarPorPlaca(String placaSerie) throws PersistenciaException {
-//        EntityManager entityManager = conexion.obtenerConexion();
-//
-//        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
-//        CriteriaQuery<Vehiculo> criteriaQuery = criteriaBuilder.createQuery(Vehiculo.class);
-//        Root<Vehiculo> root = criteriaQuery.from(Vehiculo.class);
-//
-//        criteriaQuery.select(root)
-//                .where(criteriaBuilder.equal(root.get("placa").get("serie"), placaSerie));
-//        criteriaQuery.orderBy(criteriaBuilder.desc(root.get("placa").get("id")));
-//
-//        List<Vehiculo> vehiculos = entityManager.createQuery(criteriaQuery)
-//                .setMaxResults(1)
-//                .getResultList();
-//        entityManager.close();
-//
-//        if (!vehiculos.isEmpty()) {
-//            // Vehículo encontrado
-//            return vehiculos.get(0);
-//        } else {
-//            throw new PersistenciaException("No se ha encontrado el vehiculo");
-//        }
-//    }
+@Override
+    public void RegistrarAutos(List<VehiculoEntidad> vehiculos) {
+        try {
+           entityManager.getTransaction().begin();
 
-    @Override
-    public void BuscarNumeroSerie() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
- }
-    
-//     @Override
-//    public Vehiculo consultar(String serie) throws PersistenciaException {
-//
-//        EntityManager entityManager = conexion.obtenerConexion();
-//        // objeto constructor de consultas
-//        CriteriaBuilder builder = entityManager.getCriteriaBuilder();
-//        // Objeto consulta que se esta construyendo
-//        CriteriaQuery<Vehiculo> criteria = builder.createQuery(Vehiculo.class);
-//        Root<Automovil> root = criteria.from(Automovil.class);
-//        criteria.select(root).where(builder.equal(root.get("serie"), serie));
-//
-//        // consulta construida
-//        TypedQuery<Vehiculo> query = entityManager.createQuery(criteria);
-//        List<Vehiculo> vehiculos = query.getResultList();
-//        entityManager.close();
-//
-//        if (!vehiculos.isEmpty()) {
-//            return vehiculos.get(0);
-//        } else {
-//            throw new PersistenciaException("No se ha encontrado ningun vehiculo con la serie: " + serie);
-//        }
-//
-//    }
+            for (VehiculoEntidad vehiculo : vehiculos) {
+                entityManager.persist(vehiculo);
+            }
+
+            entityManager.getTransaction().commit();
+        } finally {
+            if (entityManager != null) {
+                entityManager.close();
+            }
+        }
+    }
 }

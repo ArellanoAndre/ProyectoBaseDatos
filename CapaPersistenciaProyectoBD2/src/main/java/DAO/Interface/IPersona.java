@@ -5,14 +5,13 @@
 package DAO.Interface;
 
 import JPA.ClienteEntidad;
-import JPA.TramiteEntidad;
 import java.util.List;
 
 /**
  *
  * @author Arell
  */
-public interface ICliente {
+public interface IPersona {
     
    public List<ClienteEntidad> BuscarTodos();
     
@@ -24,7 +23,7 @@ public interface ICliente {
    
    public List<ClienteEntidad> BuscarPorAñoNacimiento(int año);
    
-    public  List<TramiteEntidad> VerHistorial(ClienteEntidad cliente);
+   public void VerHistorial();
    
    public ClienteEntidad AgregarPersona(ClienteEntidad cliente);
    

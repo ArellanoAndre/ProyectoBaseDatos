@@ -4,6 +4,10 @@
  */
 package DAO.Interface;
 
+import JPA.TramiteEntidad;
+import java.util.Calendar;
+import java.util.List;
+
 /**
  *
  * @author Arell
@@ -12,6 +16,6 @@ public interface IReporte {
     
     public void GenerarReportePDF();
     
-    public void BuscarPeriodo();
+    public List<TramiteEntidad> BuscarPeriodo(Calendar fechaDesde, Calendar fechaHasta);
     
 }

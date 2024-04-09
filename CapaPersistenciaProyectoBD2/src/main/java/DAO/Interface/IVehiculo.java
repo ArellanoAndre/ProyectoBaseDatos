@@ -4,17 +4,23 @@
  */
 package DAO.Interface;
 
+import Excepciones.PersistenciaException;
+import JPA.PlacaEntidad;
+import JPA.VehiculoEntidad;
+import java.util.List;
+
 /**
  *
  * @author Arell
  */
 public interface IVehiculo {
     
-public void RegistrarAuto();
-    
-public void BuscarPlacas();
 
-public void BuscarNumeroSerie();
+public void RegistrarAutos(List<VehiculoEntidad> vehiculos);
+    
+ public PlacaEntidad BuscarPlacas(String numero);
+
+public VehiculoEntidad BuscarNumeroSerie(Long id);
 
 
 

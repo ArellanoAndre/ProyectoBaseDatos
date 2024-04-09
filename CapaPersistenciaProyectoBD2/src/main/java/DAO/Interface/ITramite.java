@@ -4,7 +4,9 @@
  */
 package DAO.Interface;
 
+import JPA.Enum.EstadosJPA;
 import JPA.LicenciaEntidad;
+import JPA.TramiteEntidad;
 
 /**
  *
@@ -15,8 +17,10 @@ public interface ITramite {
     
 public void CalcularCosto();
 
-public LicenciaEntidad Validar();
+public TramiteEntidad Validar(String numero);
 
-public void CambiarEstado();
+public void CambiarEstado(Long Id, EstadosJPA nuevoEstado);
+
+
 
 }

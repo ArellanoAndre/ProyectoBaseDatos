@@ -1,9 +1,10 @@
 DAO\VehiculoDAO.class
 DAO\Interface\IReporte.class
-JPA\Enum\EstadoVehiculo.class
-JPA\Enum\EstadoPlaca.class
+JPA\Enum\EstadosJPA.class
 DAO\ReporteDAO.class
 JPA\PlacaEntidad.class
+DAO\TramitePlacasDAO.class
+Excepciones\PersistenciaException.class
 JPA\CostoLicenciasEntidad.class
 JPA\VehiculoEntidad.class
 DAO\Interface\IPersona.class
@@ -11,10 +12,9 @@ JPA\ClienteEntidad.class
 JPA\LicenciaEntidad.class
 DAO\Interface\IConexion.class
 DAO\Interface\IVehiculo.class
+DAO\Interface\ICliente.class
 DAO\TramiteLicenciaDAO.class
-DAO\TramiteVehiculoDAO.class
 JPA\CostoEntidad.class
-JPA\Enum\EstadoLicencia.class
 DAO\Interface\ITramite.class
 DAO\Conexion.class
 JPA\AutoMovilEntidad.class

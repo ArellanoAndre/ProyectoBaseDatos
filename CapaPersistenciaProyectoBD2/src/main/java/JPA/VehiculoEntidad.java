@@ -1,6 +1,6 @@
 package JPA;
 
-import JPA.Enum.EstadoVehiculo;
+import JPA.Enum.EstadosJPA;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -26,11 +26,11 @@ public class VehiculoEntidad implements Serializable {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long id = 1000L;
 
     @Column(name = "estado", nullable = false)
     @Enumerated(EnumType.STRING)
-    private EstadoVehiculo estado;
+    private EstadosJPA estado;
 
     @Column(name = "marca", nullable = false)
     private String marca;
@@ -54,7 +54,7 @@ public class VehiculoEntidad implements Serializable {
     public VehiculoEntidad() {
     }
 
-    public VehiculoEntidad(EstadoVehiculo estado, String marca, String linea, String color, String modelo) {
+    public VehiculoEntidad(EstadosJPA estado, String marca, String linea, String color, String modelo) {
         this.estado = estado;
         this.marca = marca;
         this.linea = linea;
@@ -70,11 +70,11 @@ public class VehiculoEntidad implements Serializable {
         this.id = id;
     }
 
-    public EstadoVehiculo getEstado() {
+    public EstadosJPA getEstado() {
         return estado;
     }
 
-    public void setEstado(EstadoVehiculo estado) {
+    public void setEstado(EstadosJPA estado) {
         this.estado = estado;
     }
 

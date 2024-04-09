@@ -1,6 +1,6 @@
 package JPA;
 
-import JPA.Enum.EstadoPlaca;
+import JPA.Enum.EstadosJPA;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,7 +16,7 @@ public class PlacaEntidad extends TramiteEntidad implements Serializable {
     private String numero;
 
     @Column(name = "estado", nullable = false)
-    private EstadoPlaca estado;
+    private EstadosJPA estado;
 
     @ManyToOne(targetEntity = CostoPlacasEntidad.class)
     @JoinColumn(name = "id_costo", nullable = false)
@@ -29,7 +29,7 @@ public class PlacaEntidad extends TramiteEntidad implements Serializable {
     public PlacaEntidad() {
     }
 
-    public PlacaEntidad(String numero, EstadoPlaca estado, ClienteEntidad cliente, VehiculoEntidad vehiculo) {
+    public PlacaEntidad(String numero, EstadosJPA estado, ClienteEntidad cliente, VehiculoEntidad vehiculo) {
         super();
         this.cliente = cliente;
         this.numero = numero;
@@ -44,11 +44,11 @@ public class PlacaEntidad extends TramiteEntidad implements Serializable {
         this.numero = numero;
     }
 
-    public EstadoPlaca getEstado() {
+    public EstadosJPA getEstado() {
         return estado;
     }
 
-    public void setEstado(EstadoPlaca estado) {
+    public void setEstado(EstadosJPA estado) {
         this.estado = estado;
     }
 
