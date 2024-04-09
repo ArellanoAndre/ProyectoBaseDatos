@@ -4,6 +4,8 @@
  */
 package interfaces;
 
+import JPA.ClienteEntidad;
+import excepciones.NegocioException;
 import java.util.List;
 
 /**
@@ -12,13 +14,13 @@ import java.util.List;
  */
 public interface IBuscarClienteBO {
 
-    public List<ClienteEntidad> BuscarTodos();
+    public List<ClienteEntidad> BuscarTodos() throws NegocioException;
 
-    public ClienteEntidad BuscarPorRFC(String rfc);
+    public ClienteEntidad BuscarPorRFC(String rfc) throws NegocioException;
 
-    public List<ClienteEntidad> BuscarPorNombre(String nombre);
+    public List<ClienteEntidad> BuscarPorNombre(String nombre) throws NegocioException;
 
-    public List<ClienteEntidad> BuscarPorApellido(String apellido);
+    public List<ClienteEntidad> BuscarPorApellido(String apellido) throws NegocioException;
 
-    public List<ClienteEntidad> BuscarPorAñoNacimiento(int año);
+    public List<ClienteEntidad> BuscarPorAñoNacimiento(int año) throws NegocioException;
 }

@@ -4,6 +4,11 @@
  */
 package negocio;
 
+import DAO.Interface.ITramite;
+import JPA.Enum.EstadosJPA;
+import JPA.LicenciaEntidad;
+import JPA.TramiteEntidad;
+import excepciones.NegocioException;
 import interfaces.IAdministrarTramiteBO;
 
 /**
@@ -11,20 +16,37 @@ import interfaces.IAdministrarTramiteBO;
  * @author Usuario
  */
 public class AdministrarTramiteBO implements IAdministrarTramiteBO {
-
+    
+    private ITramite tramiteDAO;
+    
+    public AdministrarTramiteBO(ITramite tramite) {
+        this.tramiteDAO = tramite;
+    }
+    
     @Override
-    public void CalcularCosto() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void CalcularCosto() throws NegocioException {
+        tramiteDAO.CalcularCosto();
+    }
+    
+    @Override
+    public TramiteEntidad Validar(String identificador) throws NegocioException {
+        try {
+            TramiteEntidad tramite = tramiteDAO.Validar(identificador);
+            if (tramite == null) {
+                throw new NegocioException("no se encontro el numero");
+            }
+            return tramite;
+        } catch (Exception e) {
+
+            throw new NegocioException("Error al iniciar sesión", e);
+        }
+
     }
 
+    
     @Override
-    public Object Validar() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public void CambiarEstado() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+    public void CambiarEstado(Long id, EstadosJPA nuevoEstado) throws NegocioException {
+    tramiteDAO.CambiarEstado(id, nuevoEstado);
+}
     
 }

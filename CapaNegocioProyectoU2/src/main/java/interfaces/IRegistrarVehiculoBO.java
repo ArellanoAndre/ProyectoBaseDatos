@@ -4,12 +4,16 @@
  */
 package interfaces;
 
+import JPA.VehiculoEntidad;
+import excepciones.NegocioException;
+import java.util.List;
+
 /**
  *
  * @author Usuario
  */
 public interface IRegistrarVehiculoBO {
 
-    public void RegistrarAuto();
+   public void RegistrarAutos(List<VehiculoEntidad> vehiculos) throws NegocioException;
 
 }

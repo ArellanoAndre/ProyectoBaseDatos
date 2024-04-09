@@ -4,13 +4,17 @@
  */
 package interfaces;
 
+import JPA.PlacaEntidad;
+import JPA.VehiculoEntidad;
+import excepciones.NegocioException;
+
 /**
  *
  * @author Usuario
  */
 public interface IBuscarVehiculoBO {
 
-    public void BuscarPlacas();
+    public PlacaEntidad BuscarPlacas(String numero) throws NegocioException;
 
-    public void BuscarNumeroSerie();
+    public VehiculoEntidad BuscarNumeroSerie(String numeroSerie) throws NegocioException;
 }

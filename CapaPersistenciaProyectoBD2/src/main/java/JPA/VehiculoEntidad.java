@@ -31,6 +31,9 @@ public class VehiculoEntidad implements Serializable {
     @Column(name = "estado", nullable = false)
     @Enumerated(EnumType.STRING)
     private EstadosJPA estado;
+    
+    @Column(name = "numeroSerie", nullable = false)
+    private String numeroSerie;
 
     @Column(name = "marca", nullable = false)
     private String marca;
@@ -57,12 +60,35 @@ public class VehiculoEntidad implements Serializable {
     public VehiculoEntidad() {
     }
 
-    public VehiculoEntidad(EstadosJPA estado, String marca, String linea, String color, String modelo) {
+    public VehiculoEntidad(EstadosJPA estado, String numeroSerie,String marca, String linea, String color, String modelo) {
         this.estado = estado;
+        this.numeroSerie=numeroSerie;
         this.marca = marca;
         this.linea = linea;
         this.color = color;
         this.modelo = modelo;
+    }
+
+    public VehiculoEntidad(EstadosJPA estado, String numeroSerie, String marca, String linea, String color, String modelo, int año, List<PlacaEntidad> placas, ClienteEntidad cliente) {
+        this.estado = estado;
+        this.numeroSerie = numeroSerie;
+        this.marca = marca;
+        this.linea = linea;
+        this.color = color;
+        this.modelo = modelo;
+        this.año = año;
+        this.placas = placas;
+        this.cliente = cliente;
+    }
+    
+    
+
+    public String getNumeroSerie() {
+        return numeroSerie;
+    }
+
+    public void setNumeroSerie(String numeroSerie) {
+        this.numeroSerie = numeroSerie;
     }
 
     public Long getId() {
@@ -91,6 +117,30 @@ public class VehiculoEntidad implements Serializable {
 
     public String getLinea() {
         return linea;
+    }
+
+    public int getAño() {
+        return año;
+    }
+
+    public void setAño(int año) {
+        this.año = año;
+    }
+
+    public List<PlacaEntidad> getPlacas() {
+        return placas;
+    }
+
+    public void setPlacas(List<PlacaEntidad> placas) {
+        this.placas = placas;
+    }
+
+    public ClienteEntidad getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(ClienteEntidad cliente) {
+        this.cliente = cliente;
     }
 
     public void setLinea(String linea) {

@@ -4,10 +4,28 @@
  */
 package negocio;
 
+import DAO.Interface.ICliente;
+import JPA.ClienteEntidad;
+import excepciones.NegocioException;
+import interfaces.IAgregarPersonaBO;
+
 /**
  *
  * @author Usuario
  */
-public class AgregarPersonaBO implements IAgregarPersonaBO{
+public class AgregarPersonaBO implements IAgregarPersonaBO {
+
+    private ICliente clienteDAO;
+
+    public AgregarPersonaBO(ICliente cliente) {
+        this.clienteDAO = cliente;
+    }
     
+
+    @Override
+    public ClienteEntidad AgregarPersona(ClienteEntidad cliente) throws NegocioException {
+        ClienteEntidad clienteNuevo= clienteDAO.AgregarPersona(cliente);
+        return clienteNuevo;
+    }
+
 }

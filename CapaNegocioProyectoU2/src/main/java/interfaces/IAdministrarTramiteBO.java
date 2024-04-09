@@ -4,15 +4,19 @@
  */
 package interfaces;
 
+import JPA.Enum.EstadosJPA;
+import JPA.TramiteEntidad;
+import excepciones.NegocioException;
+
 /**
  *
  * @author Usuario
  */
 public interface IAdministrarTramiteBO {
 
-    public void CalcularCosto();
+    public void CalcularCosto() throws NegocioException;
+ 
+    public TramiteEntidad Validar(String identificador) throws NegocioException;
 
-    public LicenciaEntidad Validar();
-
-    public void CambiarEstado();
+    public void CambiarEstado(Long Id, EstadosJPA nuevoEstado) throws NegocioException;
 }

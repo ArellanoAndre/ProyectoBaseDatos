@@ -4,12 +4,15 @@
  */
 package interfaces;
 
+import JPA.ClienteEntidad;
+import excepciones.NegocioException;
+
 /**
  *
  * @author Usuario
  */
 public interface IAgregarPersonaBO {
 
-    public ClienteEntidad AgregarPersona(ClienteEntidad cliente);
+    public ClienteEntidad AgregarPersona(ClienteEntidad cliente) throws NegocioException;
 
 }

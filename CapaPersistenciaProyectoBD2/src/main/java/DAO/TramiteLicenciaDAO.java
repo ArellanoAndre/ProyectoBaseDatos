@@ -37,13 +37,13 @@ EntityManager entityManager = conexion.EstablecerConexion();
     }
   
     @Override
-    public TramiteEntidad Validar(String numero) {
+    public TramiteEntidad Validar(String folio) {
        EntityManager entityManager = null;
         try {
             entityManager = conexion.EstablecerConexion();
             TypedQuery<LicenciaEntidad> query = entityManager.createQuery(
-                    "SELECT l FROM LicenciaEntidad l WHERE l.numero = :numero", LicenciaEntidad.class);
-            query.setParameter("numero", numero);
+                    "SELECT l FROM LicenciaEntidad l WHERE l.folio = :folio", LicenciaEntidad.class);
+            query.setParameter("folio", folio);
             List<LicenciaEntidad> resultados = query.getResultList();
             return resultados.isEmpty() ? null : resultados.get(0);
         } finally {

@@ -4,12 +4,17 @@
  */
 package interfaces;
 
+import JPA.TramiteEntidad;
+import excepciones.NegocioException;
+import java.util.Calendar;
+import java.util.List;
+
 /**
  *
  * @author Usuario
  */
 public interface IBuscarPeriodoReporteBO {
 
-    public void BuscarPeriodo();
+     public List<TramiteEntidad> BuscarPeriodo(Calendar fechaDesde, Calendar fechaHasta)  throws NegocioException;
 
 }

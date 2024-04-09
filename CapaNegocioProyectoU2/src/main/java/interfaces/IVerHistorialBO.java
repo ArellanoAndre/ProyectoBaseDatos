@@ -4,12 +4,17 @@
  */
 package interfaces;
 
+import JPA.ClienteEntidad;
+import JPA.TramiteEntidad;
+import excepciones.NegocioException;
+import java.util.List;
+
 /**
  *
  * @author Usuario
  */
 public interface IVerHistorialBO {
 
-    public void VerHistorial();
+     public  List<TramiteEntidad> VerHistorial(ClienteEntidad cliente)throws NegocioException;
 
 }

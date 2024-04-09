@@ -17,11 +17,7 @@ import javax.persistence.Table;
 @Table(name = "licencias_tramite")
 public class LicenciaEntidad extends TramiteEntidad implements Serializable {
     
-     @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+  
     @Column(name = "folio", unique = true, nullable = false)
     private String folio;
 

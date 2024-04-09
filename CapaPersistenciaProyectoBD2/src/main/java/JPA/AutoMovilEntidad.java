@@ -12,8 +12,9 @@ public class AutoMovilEntidad extends VehiculoEntidad implements Serializable {
     public AutoMovilEntidad() {
     }
 
-    public AutoMovilEntidad(EstadosJPA estado, String marca, String linea, String color, String modelo) {
-        super(estado, marca, linea, color, modelo);
+    public AutoMovilEntidad(EstadosJPA estado, String numeroSerie, String marca, String linea, String color, String modelo) {
+        super(estado, numeroSerie, marca, linea, color, modelo);
     }
-    
 }
+
+   

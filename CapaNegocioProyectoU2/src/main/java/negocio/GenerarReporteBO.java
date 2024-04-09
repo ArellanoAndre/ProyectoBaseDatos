@@ -4,17 +4,25 @@
  */
 package negocio;
 
+import DAO.Interface.IReporte;
+import excepciones.NegocioException;
 import interfaces.IGenerarReporteBO;
 
 /**
  *
  * @author Usuario
  */
-public class GenerarReporteBO implements IGenerarReporteBO{
+public class GenerarReporteBO implements IGenerarReporteBO {
+
+    private IReporte reporteDAO;
+
+    public GenerarReporteBO(IReporte reporte) {
+        this.reporteDAO = reporte;
+    }
 
     @Override
-    public void GenerarReportePDF() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void GenerarReportePDF() throws NegocioException {
+        reporteDAO.GenerarReportePDF();
     }
-    
+
 }

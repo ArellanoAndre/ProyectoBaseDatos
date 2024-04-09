@@ -4,7 +4,12 @@
  */
 package negocio;
 
+import DAO.Interface.IReporte;
+import JPA.TramiteEntidad;
+import excepciones.NegocioException;
 import interfaces.IBuscarPeriodoReporteBO;
+import java.util.Calendar;
+import java.util.List;
 
 /**
  *
@@ -12,9 +17,16 @@ import interfaces.IBuscarPeriodoReporteBO;
  */
 public class BuscarPeriodoReporteBO implements IBuscarPeriodoReporteBO {
 
-    @Override
-    public void BuscarPeriodo() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    private IReporte reporteDAO;
+
+    public BuscarPeriodoReporteBO(IReporte reporte) {
+        this.reporteDAO = reporte;
     }
-    
+
+    @Override
+    public List<TramiteEntidad> BuscarPeriodo(Calendar fechaDesde, Calendar fechaHasta) throws NegocioException {
+        List<TramiteEntidad> reportes=reporteDAO.BuscarPeriodo(fechaDesde, fechaHasta);
+        return reportes;
+    }
+
 }

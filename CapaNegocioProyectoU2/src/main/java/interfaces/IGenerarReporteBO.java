@@ -4,12 +4,14 @@
  */
 package interfaces;
 
+import excepciones.NegocioException;
+
 /**
  *
  * @author Usuario
  */
 public interface IGenerarReporteBO {
 
-    public void GenerarReportePDF();
+    public void GenerarReportePDF() throws NegocioException;
 
 }

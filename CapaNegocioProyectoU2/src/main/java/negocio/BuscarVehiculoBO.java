@@ -4,22 +4,34 @@
  */
 package negocio;
 
+import DAO.Interface.IVehiculo;
+import JPA.PlacaEntidad;
+import JPA.VehiculoEntidad;
+import excepciones.NegocioException;
 import interfaces.IBuscarVehiculoBO;
 
 /**
  *
  * @author Usuario
  */
-public class BuscarVehiculoBO implements IBuscarVehiculoBO{
+public class BuscarVehiculoBO implements IBuscarVehiculoBO {
 
-    @Override
-    public void BuscarPlacas() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    private IVehiculo buscarVehiculoDAO;
+
+    public BuscarVehiculoBO(IVehiculo buscarVehiculo) {
+        this.buscarVehiculoDAO = buscarVehiculo;
     }
 
     @Override
-    public void BuscarNumeroSerie() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public PlacaEntidad BuscarPlacas(String numero) throws NegocioException {
+        PlacaEntidad placa= buscarVehiculoDAO.BuscarPlacas(numero);
+        return placa;
     }
-    
+
+    @Override
+    public VehiculoEntidad BuscarNumeroSerie(String numeroSerie) throws NegocioException {
+        VehiculoEntidad vehiculo = buscarVehiculoDAO.BuscarNumeroSerie(numeroSerie);
+        return vehiculo;
+    }
+
 }

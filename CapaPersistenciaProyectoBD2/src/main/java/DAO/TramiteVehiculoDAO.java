@@ -5,13 +5,15 @@
 package DAO;
 
 import DAO.Interface.ITramite;
+import JPA.Enum.EstadosJPA;
 import JPA.LicenciaEntidad;
+import JPA.TramiteEntidad;
 
 /**
  *
  * @author Arell
  */
-public class TramiteVehiculoDAO implements ITramite{
+public class TramiteVehiculoDAO implements ITramite {
 
     @Override
     public void CalcularCosto() {
@@ -19,13 +21,13 @@ public class TramiteVehiculoDAO implements ITramite{
     }
 
     @Override
-    public void CambiarEstado() {
+    public TramiteEntidad Validar(String numero) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public LicenciaEntidad Validar() {
+    public void CambiarEstado(Long Id, EstadosJPA nuevoEstado) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
+
 }

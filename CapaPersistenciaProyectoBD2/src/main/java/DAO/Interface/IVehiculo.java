@@ -20,7 +20,7 @@ public void RegistrarAutos(List<VehiculoEntidad> vehiculos);
     
  public PlacaEntidad BuscarPlacas(String numero);
 
-public VehiculoEntidad BuscarNumeroSerie(Long id);
+public VehiculoEntidad BuscarNumeroSerie(String numeroSerie);
 
 
 

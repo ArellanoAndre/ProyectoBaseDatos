@@ -38,11 +38,11 @@ EntityManager entityManager = conexion.EstablecerConexion();
         }
     }
 @Override
-    public VehiculoEntidad BuscarNumeroSerie(Long id) {
+    public VehiculoEntidad BuscarNumeroSerie(String numeroSerie) {
         try {
             TypedQuery<VehiculoEntidad> query = entityManager.createQuery(
-                    "SELECT v FROM VehiculoEntidad v WHERE v.id = :id", VehiculoEntidad.class);
-            query.setParameter("id", id);
+                    "SELECT v FROM VehiculoEntidad v WHERE v.numeroSerie = :numeroSerie", VehiculoEntidad.class);
+            query.setParameter("numeroSerie", numeroSerie);
             List<VehiculoEntidad> resultados = query.getResultList();
             return resultados.isEmpty() ? null : resultados.get(0);
         } finally {
