@@ -26,20 +26,7 @@ EntityManager entityManager = conexion.EstablecerConexion();
     public void CalcularCosto() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-
-//    @Override
-//    public LicenciaEntidad Validar() {
-//EntityManager entityManager = conexion.EstablecerConexion();
-//        LicenciaEntidad licencia = entityManager.find(LicenciaEntidad.class, id);
-//        entityManager.getTransaction().begin();
-//        entityManager.close();
-//        return licencia;   
-//    }
-//
-//    @Override
-//    public void CambiarEstado(LicenciaEntidad licencia, EstadosJPA nuevoEstado) {}
-//    
-//    
+  
     public LicenciaEntidad agregar(LicenciaEntidad licencia) {
         entityManager.getTransaction().begin();
         entityManager.persist(licencia);
@@ -48,10 +35,7 @@ EntityManager entityManager = conexion.EstablecerConexion();
         entityManager.close();
         return licencia;
     }
-    
-
-    
-
+  
     @Override
     public TramiteEntidad Validar(String numero) {
        EntityManager entityManager = null;

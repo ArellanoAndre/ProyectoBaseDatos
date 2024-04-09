@@ -12,6 +12,7 @@ import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import DAO.Interface.ICliente;
 import JPA.TramiteEntidad;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -94,6 +95,7 @@ EntityManager entityManager = conexion.EstablecerConexion();
         }
     } 
     
+    
     @Override
     public ClienteEntidad AgregarPersona(ClienteEntidad cliente) {
     entityManager.getTransaction().begin();
@@ -112,6 +114,28 @@ EntityManager entityManager = conexion.EstablecerConexion();
         entityManager.getTransaction().commit();
         entityManager.close();
         return clientes;}
+
+        private DefaultTableModel construirModeloTabla(List<TramiteEntidad> tramites) {
+        DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("ID");
+        model.addColumn("Fecha de Creación");
+        model.addColumn("Fecha de Actualización");
+        model.addColumn("Costo");
+        // Agrega más columnas según los atributos que desees mostrar
+
+        for (TramiteEntidad tramite : tramites) {
+            Object[] row = {
+                    tramite.getId(),
+                    tramite.getFechaCreacion(),
+                    tramite.getFechaActualizacion(),
+                    tramite.getCostoNormal()
+                    // Agrega más atributos según los que desees mostrar en la tabla
+            };
+            model.addRow(row);
+        }
+
+        return model;
+    }
 
     
    

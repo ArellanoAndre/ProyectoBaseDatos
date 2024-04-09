@@ -44,6 +44,9 @@ public class VehiculoEntidad implements Serializable {
     @Column(name = "modelo", nullable = false)
     private String modelo;
     
+    @Column(name = "año", nullable = false)
+    private int año;
+    
     @OneToMany(mappedBy = "vehiculo", cascade = {CascadeType.PERSIST})
     private List<PlacaEntidad> placas;
     

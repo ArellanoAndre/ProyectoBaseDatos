@@ -33,7 +33,7 @@ public class TramiteEntidad implements Serializable {
     @Temporal(TemporalType.DATE)
     private Calendar fechaActualizacion;
 
-    @Column(name = "costo_normal")
+    @Column(name = "costo")
     protected double costo;
     
     @ManyToOne(targetEntity = ClienteEntidad.class)

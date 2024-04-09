@@ -10,6 +10,7 @@ import JPA.Enum.EstadosJPA;
 import JPA.PlacaEntidad;
 import JPA.TramiteEntidad;
 import java.util.List;
+import java.util.Random;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
@@ -21,6 +22,11 @@ public class TramitePlacasDAO implements ITramite{
 //Atributo de clase Tipo Iconexion 
 private IConexion conexion;
 EntityManager entityManager = conexion.EstablecerConexion();
+//Atributos de clase 
+private static final Random RANDOM = new Random();
+    private static final String LETRAS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    private static final String DIGITOS = "0123456789";
+    
     @Override
     public void CalcularCosto() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
@@ -70,8 +76,20 @@ EntityManager entityManager = conexion.EstablecerConexion();
         }
     }
     
-    public String GenerarCodigoPlaca(){
-    return null;
+    public static String generarCadenaAleatoria() {
+        StringBuilder sb = new StringBuilder();
+        // Generar 3 letras aleatorias
+        for (int i = 0; i < 3; i++) {
+            sb.append(LETRAS.charAt(RANDOM.nextInt(LETRAS.length())));
+        }
+        // Insertar guion
+        sb.append("-");
+
+        // Generar 3 números aleatorios
+        for (int i = 0; i < 3; i++) {
+            sb.append(DIGITOS.charAt(RANDOM.nextInt(DIGITOS.length())));
+        }
+        return sb.toString();
     }
 
   
