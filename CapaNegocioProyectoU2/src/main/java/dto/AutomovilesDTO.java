@@ -2,14 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-
+package dto;
 
 /**
  *
- * @author Arell
+ * @author Usuario
  */
-public class AutomovilDTO {
-    
+public class AutomovilesDTO {
     private String serie;
 
     private String marca;
@@ -27,7 +26,7 @@ public class AutomovilDTO {
      *
      * @param serie El número de serie del automóvil.
      */
-    public AutomovilDTO(String serie) {
+    public AutomovilesDTO(String serie) {
         this.serie = serie;
     }
 
@@ -41,7 +40,7 @@ public class AutomovilDTO {
      * @param modelo El modelo del automóvil.
      * @param año el año del carro
      */
-    public AutomovilDTO(String serie, String marca, String color, String linea, String modelo,int año) {
+    public AutomovilesDTO(String serie, String marca, String color, String linea, String modelo,int año) {
         this.serie = serie;
         this.marca = marca;
         this.color = color;

@@ -14,6 +14,8 @@ import javax.swing.JOptionPane;
  */
 public class CostosLicenciaAuto extends javax.swing.JFrame {
 
+    String[] opciones = {"1 año", "2 años", "3 años"};
+
     /**
      * Creates new form LicenciaPanel
      */
@@ -192,13 +194,14 @@ public class CostosLicenciaAuto extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarActionPerformed
-      //  CostosLicenciaAuto licencia = new CostosLicenciaAuto();
+        //  CostosLicenciaAuto licencia = new CostosLicenciaAuto();
         //licencia.setVisible(true);
     }//GEN-LAST:event_AceptarActionPerformed
 
     private void Aceptar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Aceptar1ActionPerformed
-            InicioMenuPanel inicio = new InicioMenuPanel();
-        inicio.setVisible(true);this.dispose();
+        InicioMenuPanel inicio = new InicioMenuPanel();
+        inicio.setVisible(true);
+        this.dispose();
         JOptionPane.showMessageDialog(this, "El Tramite se realizo correctamente.", "Transacción Exitosa", JOptionPane.INFORMATION_MESSAGE);
 
     }//GEN-LAST:event_Aceptar1ActionPerformed

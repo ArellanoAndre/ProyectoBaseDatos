@@ -5,6 +5,11 @@
 package Frames;
 
 import Tools.Imagen;
+import dto.ClientesDTO;
+import excepciones.NegocioException;
+import interfaces.IBuscarClienteBO;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -14,15 +19,20 @@ import javax.swing.JOptionPane;
  */
 public class DatosLicencia extends javax.swing.JFrame {
 
+    private IBuscarClienteBO buscarCliente;
+    private ClientesDTO cliente;
+    
+
     /**
      * Creates new form IdentificacionLicencia
      */
-    public DatosLicencia() {
-           initComponents();
+    public DatosLicencia(IBuscarClienteBO buscarCliente) {
+        this.buscarCliente=buscarCliente;
+        initComponents();
         //Configurar Tamaño JFrame
         setTitle("ventana de Datos Licencia  ");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-         // Configurar la Foto
+        // Configurar la Foto
         Imagen imagen = new Imagen();
         imagen.PintarImagen(FotoGobSonora, "src\\Pantallas\\GobSonora.jpg");
 
@@ -95,12 +105,6 @@ public class DatosLicencia extends javax.swing.JFrame {
         Cancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CancelarActionPerformed(evt);
-            }
-        });
-
-        CampoCurp1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CampoCurp1ActionPerformed(evt);
             }
         });
 
@@ -216,12 +220,19 @@ public class DatosLicencia extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_CancelarActionPerformed
 
-    private void CampoCurp1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoCurp1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CampoCurp1ActionPerformed
-
     private void AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarActionPerformed
-         CostosLicenciaAuto licencia = new CostosLicenciaAuto();
+        String rfc = CampoCurp1.getText();
+        try {
+            if (buscarCliente.BuscarPorRFC(rfc) != null) {
+                cliente.setRfc(rfc);
+                
+            }
+
+        } catch (NegocioException ex) {
+            JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage(), "Error de Verificacion", JOptionPane.ERROR_MESSAGE);
+        }
+
+        CostosLicenciaAuto licencia = new CostosLicenciaAuto();
         licencia.setVisible(true);
     }//GEN-LAST:event_AceptarActionPerformed
 

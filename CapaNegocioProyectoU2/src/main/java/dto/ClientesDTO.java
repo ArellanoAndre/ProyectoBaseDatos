@@ -2,16 +2,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-
+package dto;
 
 import java.util.Calendar;
 
 /**
  *
- * @author Arell
+ * @author Usuario
  */
-public class ClienteDTO {
-    
+public class ClientesDTO {
     private String rfc;
 
     private String nombre;
@@ -37,7 +36,7 @@ public class ClienteDTO {
      * @param fecha_nacimiento La fecha de nacimiento del cliente.
      * @param telefono El número de teléfono del cliente.
      */
-    public ClienteDTO(String rfc, String nombre, String apellido_paterno, String apellido_Materno, Boolean discapacitado, Calendar fecha_nacimiento, String telefono) {
+    public ClientesDTO(String rfc, String nombre, String apellido_paterno, String apellido_Materno, Boolean discapacitado, Calendar fecha_nacimiento, String telefono) {
         this.rfc = rfc;
         this.nombre = nombre;
         this.apellido_paterno = apellido_paterno;
@@ -52,14 +51,14 @@ public class ClienteDTO {
      *
      * @param rfc El RFC del cliente.
      */
-    public ClienteDTO(String rfc) {
+    public ClientesDTO(String rfc) {
         this.rfc = rfc;
     }
 
     /**
      * Crea un nuevo objeto ClienteDTO sin inicializar sus atributos.
      */
-    public ClienteDTO() {
+    public ClientesDTO() {
     }
 
     /**
@@ -190,3 +189,5 @@ public class ClienteDTO {
         this.telefono = telefono;
     }
 }
+
+
