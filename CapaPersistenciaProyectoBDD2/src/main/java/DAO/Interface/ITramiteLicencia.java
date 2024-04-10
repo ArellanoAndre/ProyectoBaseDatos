@@ -6,6 +6,7 @@ package DAO.Interface;
 
 import Excepciones.PersistenciaException;
 import JPA.Enum.EstadosJPA;
+import JPA.LicenciaEntidad;
 import JPA.TramiteEntidad;
 
 /**
@@ -14,10 +15,12 @@ import JPA.TramiteEntidad;
  */
 public interface ITramiteLicencia {
 
-    public void CalcularCosto() throws PersistenciaException;
+    public double CalcularCosto(String Vigencia, boolean isDiscapacitado) throws PersistenciaException;
 
     public TramiteEntidad Validar(String numero) throws PersistenciaException;
 
     public void CambiarEstado(Long Id, EstadosJPA nuevoEstado) throws PersistenciaException;
+
+    public LicenciaEntidad agregar(LicenciaEntidad licencia) throws PersistenciaException;
 
 }

@@ -21,14 +21,58 @@ import Excepciones.PersistenciaException;
  */
 public class TramiteLicenciaDAO implements ITramiteLicencia {
 //Atributo de clase Tipo Iconexion 
-private IConexion conexion;
-EntityManager entityManager = conexion.EstablecerConexion();
+
+    private IConexion conexion;
+    EntityManager entityManager = conexion.EstablecerConexion();
 
     @Override
-    public void CalcularCosto() throws PersistenciaException {
-        throw new UnsupportedOperationException("Not supported yet.") ; // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public double CalcularCosto(String Vigencia, boolean isDiscapacitado) throws PersistenciaException {
+        double costo;
+        try{
+        if (!isDiscapacitado) {
+            costo = this.CalcularCostoNormal(Vigencia);
+            return costo;
+        }
+        costo = this.CalcularCostoDiscapacitado(Vigencia);
+        return costo;
+        } catch (Exception e) {
+            throw new PersistenciaException("Error al obtener el precio");
+        }
     }
-  
+
+    private double CalcularCostoNormal(String vigencia) throws PersistenciaException {
+        try {
+            TypedQuery<Double> query = entityManager.createQuery(
+                    "SELECT c.Costo_Normal FROM costoLicencias c WHERE c.Vigencia = :vigencia ", Double.class);
+            query.setParameter("vigencia", vigencia);
+            Double costo = query.getSingleResult();
+            if (costo != null) {
+                return costo;
+            } else {
+                throw new PersistenciaException("No se encontró el costo para la vigencia y condición especificadas.");
+            }
+        } catch (Exception e) {
+            throw new PersistenciaException("Error al consultar la base de datos.");
+        }
+    }
+
+    private double CalcularCostoDiscapacitado(String vigencia) throws PersistenciaException {
+        try {
+            TypedQuery<Double> query = entityManager.createQuery(
+                    "SELECT c.Costo_Discapacitado FROM costoLicencias c WHERE c.Vigencia = :vigencia ", Double.class);
+            query.setParameter("vigencia", vigencia);
+            Double costo = query.getSingleResult();
+            if (costo != null) {
+                return costo;
+            } else {
+                throw new PersistenciaException("No se encontró el costo para la vigencia y condición especificadas.");
+            }
+        } catch (Exception e) {
+            throw new PersistenciaException("Error al consultar la base de datos.");
+        }
+    }
+
+    @Override
     public LicenciaEntidad agregar(LicenciaEntidad licencia) throws PersistenciaException {
         entityManager.getTransaction().begin();
         entityManager.persist(licencia);
@@ -37,10 +81,10 @@ EntityManager entityManager = conexion.EstablecerConexion();
         entityManager.close();
         return licencia;
     }
-  
+
     @Override
     public TramiteEntidad Validar(String folio) throws PersistenciaException {
-       EntityManager entityManager = null;
+        EntityManager entityManager = null;
         try {
             entityManager = conexion.EstablecerConexion();
             TypedQuery<LicenciaEntidad> query = entityManager.createQuery(
@@ -53,12 +97,11 @@ EntityManager entityManager = conexion.EstablecerConexion();
                 entityManager.close();
             }
         }
-    } 
-
+    }
 
     @Override
     public void CambiarEstado(Long Id, EstadosJPA nuevoEstado) throws PersistenciaException {
-          try {
+        try {
             entityManager.getTransaction().begin();
 
             LicenciaEntidad placa = entityManager.find(LicenciaEntidad.class, Id);
@@ -73,5 +116,6 @@ EntityManager entityManager = conexion.EstablecerConexion();
             if (entityManager != null) {
                 entityManager.close();
             }
-        } }
+        }
+    }
 }

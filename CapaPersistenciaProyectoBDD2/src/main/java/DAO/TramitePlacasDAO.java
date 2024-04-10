@@ -30,9 +30,22 @@ public class TramitePlacasDAO implements ITramitePlaca {
     private static final String DIGITOS = "0123456789";
 
     @Override
-    public void CalcularCosto() throws PersistenciaException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public double CalcularCosto(EstadosJPA estado) throws PersistenciaException {
+          try {
+            TypedQuery<Double> query = entityManager.createQuery(
+                "SELECT c.Costo_Normal FROM costoPlacas c WHERE c.estado = :estado", Double.class);
+            query.setParameter("estado", estado);
+            Double costoPlacas = query.getSingleResult();
+            if (costoPlacas != null) {
+                return costoPlacas;
+            } else {
+                throw new PersistenciaException("No se encontró el costo de placas para el estado de auto especificado.");
+            }
+        } catch (Exception e) {
+            throw new PersistenciaException("Error al consultar la base de datos.");
+        }
     }
+    
 
     public PlacaEntidad agregar(PlacaEntidad placas) throws PersistenciaException {
         entityManager.getTransaction().begin();

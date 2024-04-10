@@ -16,7 +16,7 @@ import JPA.TramiteEntidad;
  */
 public interface ITramitePlaca {
 
-    public void CalcularCosto() throws PersistenciaException;
+     public double CalcularCosto(EstadosJPA estado) throws PersistenciaException;
 
     public TramiteEntidad Validar(String numero) throws PersistenciaException;
 

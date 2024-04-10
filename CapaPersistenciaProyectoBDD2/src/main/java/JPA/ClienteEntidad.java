@@ -65,6 +65,18 @@ public class ClienteEntidad implements Serializable {
     public ClienteEntidad() {
     }
 
+    public ClienteEntidad(String nombres, String apellidoPaterno, String apellidoMaterno, String rfc, String telefono, boolean isDiscapacitado, Calendar fechaNacimiento, List<TramiteEntidad> tramites, List<VehiculoEntidad> vehiculos) {
+        this.nombres = nombres;
+        this.apellidoPaterno = apellidoPaterno;
+        this.apellidoMaterno = apellidoMaterno;
+        this.rfc = rfc;
+        this.telefono = telefono;
+        this.isDiscapacitado = isDiscapacitado;
+        this.fechaNacimiento = fechaNacimiento;
+        this.tramites = tramites;
+        this.vehiculos = vehiculos;
+    }
+
     public ClienteEntidad(String nombres, String apellidoPaterno, String apellidoMaterno, String rfc, String telefono, boolean isDiscapacitado, Calendar fechaNacimiento) {
         this.nombres = nombres;
         this.apellidoPaterno = apellidoPaterno;

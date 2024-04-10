@@ -4,16 +4,26 @@
  */
 package negocio;
 
+import DAO.Interface.ITramiteLicencia;
+import Excepciones.PersistenciaException;
 import JPA.Enum.EstadosJPA;
 import JPA.TramiteEntidad;
 import excepciones.NegocioException;
 import interfaces.IGenerarTramiteLicenciaBO;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author Usuario
  */
-public class GenerarTramiteLicenciaBO implements IGenerarTramiteLicenciaBO{
+public class GenerarTramiteLicenciaBO implements IGenerarTramiteLicenciaBO {
+
+    private ITramiteLicencia tramiteLicencia;
+
+    public GenerarTramiteLicenciaBO(ITramiteLicencia tramiteLicencia) {
+        this.tramiteLicencia = tramiteLicencia;
+    }
 
     @Override
     public void CalcularCosto() throws NegocioException {
@@ -22,12 +32,26 @@ public class GenerarTramiteLicenciaBO implements IGenerarTramiteLicenciaBO{
 
     @Override
     public TramiteEntidad Validar(String identificador) throws NegocioException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        try {
+            TramiteEntidad tramite = tramiteLicencia.Validar(identificador);
+            if (tramite == null) {
+                throw new NegocioException("no se encontro el numero");
+            }
+            return tramite;
+        } catch (Exception e) {
+
+            throw new NegocioException("Error al iniciar sesión", e);
+        }
+
     }
 
     @Override
-    public void CambiarEstado(Long Id, EstadosJPA nuevoEstado) throws NegocioException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void CambiarEstado(Long id, EstadosJPA nuevoEstado) throws NegocioException {
+        try {
+            tramiteLicencia.CambiarEstado(id, nuevoEstado);
+        } catch (PersistenciaException ex) {
+            Logger.getLogger(GenerarTramiteLicenciaBO.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
-    
+
 }

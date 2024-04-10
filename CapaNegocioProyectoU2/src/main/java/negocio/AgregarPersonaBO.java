@@ -5,9 +5,12 @@
 package negocio;
 
 import DAO.Interface.ICliente;
+import Excepciones.PersistenciaException;
 import JPA.ClienteEntidad;
 import excepciones.NegocioException;
 import interfaces.IAgregarPersonaBO;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -20,12 +23,17 @@ public class AgregarPersonaBO implements IAgregarPersonaBO {
     public AgregarPersonaBO(ICliente cliente) {
         this.clienteDAO = cliente;
     }
-    
 
     @Override
     public ClienteEntidad AgregarPersona(ClienteEntidad cliente) throws NegocioException {
-        ClienteEntidad clienteNuevo= clienteDAO.AgregarPersona(cliente);
-        return clienteNuevo;
+        ClienteEntidad clienteNuevo;
+        try {
+            clienteNuevo = clienteDAO.AgregarPersona(cliente);
+            return clienteNuevo;
+
+        } catch (PersistenciaException ex) {
+            throw new NegocioException("No se pudo agregar a las personas");
+        }
     }
 
 }

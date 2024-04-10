@@ -5,11 +5,14 @@
 package negocio;
 
 import DAO.Interface.ICliente;
+import Excepciones.PersistenciaException;
 import JPA.ClienteEntidad;
 import excepciones.NegocioException;
 import interfaces.IBuscarClienteBO;
 import java.util.Calendar;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -25,11 +28,16 @@ public class BuscarClienteBO implements IBuscarClienteBO {
 
     @Override
     public List<ClienteEntidad> BuscarTodos() throws NegocioException {
-        if (clienteDAO.BuscarTodos().isEmpty()) {
-            throw new NegocioException("No hay ningun cliente registrado");
+        try {
+            if (clienteDAO.BuscarTodos().isEmpty()) {
+                throw new NegocioException("No hay ningun cliente registrado");
+            }
+
+            List<ClienteEntidad> clientes = clienteDAO.BuscarTodos();
+            return clientes;
+        } catch (PersistenciaException ex) {
+            throw new NegocioException("No se pudo buscar");
         }
-        List<ClienteEntidad> clientes = clienteDAO.BuscarTodos();
-        return clientes;
     }
 
     @Override
@@ -38,8 +46,14 @@ public class BuscarClienteBO implements IBuscarClienteBO {
             throw new NegocioException("La busqueda debe contener informacion sobre el rfc");
 
         }
-        ClienteEntidad cliente = clienteDAO.BuscarPorRFC(rfc);
-        return cliente;
+        ClienteEntidad cliente;
+        try {
+            cliente = clienteDAO.BuscarPorRFC(rfc);
+            return cliente;
+        } catch (PersistenciaException ex) {
+            throw new NegocioException("No se pudo buscar por RFC");
+        }
+
     }
 
     @Override
@@ -47,8 +61,14 @@ public class BuscarClienteBO implements IBuscarClienteBO {
         if (nombre == null || nombre.trim().isBlank()) {
             throw new NegocioException("Ingrese un nombre valido");
         }
-        List<ClienteEntidad> clientes = clienteDAO.BuscarPorNombre(nombre);
-        return clientes;
+        List<ClienteEntidad> clientes;
+        try {
+            clientes = clienteDAO.BuscarPorNombre(nombre);
+            return clientes;
+        } catch (PersistenciaException ex) {
+            throw new NegocioException("No se pudo buscar por Nombre");
+        }
+
     }
 
     @Override
@@ -56,8 +76,13 @@ public class BuscarClienteBO implements IBuscarClienteBO {
         if (apellido == null || apellido.trim().isBlank()) {
             throw new NegocioException("Ingrese un apellido valido");
         }
-        List<ClienteEntidad> clientes = clienteDAO.BuscarPorApellido(apellido);
-        return clientes;
+        List<ClienteEntidad> clientes;
+        try {
+            clientes = clienteDAO.BuscarPorApellido(apellido);
+            return clientes;
+        } catch (PersistenciaException ex) {
+            throw new NegocioException("No se pudo buscar por apellidos");
+        }
     }
 
     @Override
@@ -68,8 +93,14 @@ public class BuscarClienteBO implements IBuscarClienteBO {
             throw new NegocioException("Ingrese un año valido");
         }
 
-        List<ClienteEntidad> clientes = clienteDAO.BuscarPorAñoNacimiento(año);
-        return clientes;
+        List<ClienteEntidad> clientes;
+        try {
+            clientes = clienteDAO.BuscarPorAñoNacimiento(año);
+            return clientes;
+        } catch (PersistenciaException ex) {
+            throw new NegocioException("No se pudo buscar por apellido");
+        }
+        
     }
 
     private void VerificarFechaAñoMenorHoy(int año) throws NegocioException {
