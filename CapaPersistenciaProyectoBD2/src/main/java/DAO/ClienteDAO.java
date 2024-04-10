@@ -20,8 +20,9 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ClienteDAO implements ICliente {
     //Atributo de clase Tipo Iconexion 
-private IConexion conexion;
-EntityManager entityManager = conexion.EstablecerConexion();
+
+    private IConexion conexion;
+    EntityManager entityManager = conexion.EstablecerConexion();
 
     @Override
     public ClienteEntidad BuscarPorRFC(String rfc) {
@@ -34,56 +35,60 @@ EntityManager entityManager = conexion.EstablecerConexion();
         } catch (Exception e) {
             cliente = null;
         }
-        return cliente;}
+        return cliente;
+    }
 
     @Override
     public List<ClienteEntidad> BuscarPorNombre(String nombre) {
-    entityManager.getTransaction().begin();
+        entityManager.getTransaction().begin();
 
-    StringBuilder jpqlBuilder = new StringBuilder("SELECT c FROM Cliente c WHERE c.nombre LIKE :nombre");
-    TypedQuery<ClienteEntidad> query = entityManager.createQuery(jpqlBuilder.toString(), ClienteEntidad.class);
-    query.setParameter("nombre", "%" + nombre + "%");
+        StringBuilder jpqlBuilder = new StringBuilder("SELECT c FROM Cliente c WHERE c.nombre LIKE :nombre");
+        TypedQuery<ClienteEntidad> query = entityManager.createQuery(jpqlBuilder.toString(), ClienteEntidad.class);
+        query.setParameter("nombre", "%" + nombre + "%");
 
-    List<ClienteEntidad> clientes = query.getResultList();
+        List<ClienteEntidad> clientes = query.getResultList();
 
-    entityManager.getTransaction().commit();
-    entityManager.close();
+        entityManager.getTransaction().commit();
+        entityManager.close();
 
-    return clientes; }
+        return clientes;
+    }
 
     @Override
     public List<ClienteEntidad> BuscarPorApellido(String apellido) {
-   entityManager.getTransaction().begin();
+        entityManager.getTransaction().begin();
 
-    StringBuilder jpqlBuilder = new StringBuilder("SELECT c FROM Cliente c WHERE c.apellido LIKE :apellido");
-    TypedQuery<ClienteEntidad> query = entityManager.createQuery(jpqlBuilder.toString(), ClienteEntidad.class);
-    query.setParameter("apellido", "%" + apellido + "%");
+        StringBuilder jpqlBuilder = new StringBuilder("SELECT c FROM Cliente c WHERE c.apellido LIKE :apellido");
+        TypedQuery<ClienteEntidad> query = entityManager.createQuery(jpqlBuilder.toString(), ClienteEntidad.class);
+        query.setParameter("apellido", "%" + apellido + "%");
 
-    List<ClienteEntidad> clientes = query.getResultList();
+        List<ClienteEntidad> clientes = query.getResultList();
 
-    entityManager.getTransaction().commit();
-    entityManager.close();
+        entityManager.getTransaction().commit();
+        entityManager.close();
 
-    return clientes; }
+        return clientes;
+    }
 
     @Override
     public List<ClienteEntidad> BuscarPorAñoNacimiento(int año) {
-    entityManager.getTransaction().begin();
+        entityManager.getTransaction().begin();
 
-    StringBuilder jpqlBuilder = new StringBuilder("SELECT c FROM Cliente c WHERE YEAR(c.fecha_nacimiento) = :año");
-    TypedQuery<ClienteEntidad> query = entityManager.createQuery(jpqlBuilder.toString(), ClienteEntidad.class);
-    query.setParameter("año", año);
+        StringBuilder jpqlBuilder = new StringBuilder("SELECT c FROM Cliente c WHERE YEAR(c.fecha_nacimiento) = :año");
+        TypedQuery<ClienteEntidad> query = entityManager.createQuery(jpqlBuilder.toString(), ClienteEntidad.class);
+        query.setParameter("año", año);
 
-    List<ClienteEntidad> clientes = query.getResultList();
+        List<ClienteEntidad> clientes = query.getResultList();
 
-    entityManager.getTransaction().commit();
-    entityManager.close();
+        entityManager.getTransaction().commit();
+        entityManager.close();
 
-    return clientes; }
+        return clientes;
+    }
 
     @Override
-    public  List<TramiteEntidad> VerHistorial(ClienteEntidad cliente) {
-           try {
+    public List<TramiteEntidad> VerHistorial(ClienteEntidad cliente) {
+        try {
             TypedQuery<TramiteEntidad> query = entityManager.createQuery(
                     "SELECT t FROM TramiteEntidad t WHERE t.cliente = :cliente", TramiteEntidad.class);
             query.setParameter("cliente", cliente);
@@ -93,29 +98,30 @@ EntityManager entityManager = conexion.EstablecerConexion();
                 entityManager.close();
             }
         }
-    } 
-    
-    
+    }
+
     @Override
     public ClienteEntidad AgregarPersona(ClienteEntidad cliente) {
-    entityManager.getTransaction().begin();
+        entityManager.getTransaction().begin();
         entityManager.persist(cliente);
 
         entityManager.getTransaction().commit();
         entityManager.close();
-        return cliente;    }
+        return cliente;
+    }
 
     @Override
     public List<ClienteEntidad> BuscarTodos() {
         entityManager.getTransaction().begin();
         TypedQuery<ClienteEntidad> query = entityManager.createQuery(
-                "", ClienteEntidad.class);
+                "SELECT c FROM ClienteEntidad c", ClienteEntidad.class);
         List<ClienteEntidad> clientes = query.getResultList();
         entityManager.getTransaction().commit();
         entityManager.close();
-        return clientes;}
+        return clientes;
+    }
 
-        private DefaultTableModel construirModeloTabla(List<TramiteEntidad> tramites) {
+    private DefaultTableModel construirModeloTabla(List<TramiteEntidad> tramites) {
         DefaultTableModel model = new DefaultTableModel();
         model.addColumn("ID");
         model.addColumn("Fecha de Creación");
@@ -125,11 +131,11 @@ EntityManager entityManager = conexion.EstablecerConexion();
 
         for (TramiteEntidad tramite : tramites) {
             Object[] row = {
-                    tramite.getId(),
-                    tramite.getFechaCreacion(),
-                    tramite.getFechaActualizacion(),
-                    tramite.getCostoNormal()
-                    // Agrega más atributos según los que desees mostrar en la tabla
+                tramite.getId(),
+                tramite.getFechaCreacion(),
+                tramite.getFechaActualizacion(),
+                tramite.getCostoNormal()
+            // Agrega más atributos según los que desees mostrar en la tabla
             };
             model.addRow(row);
         }
@@ -137,7 +143,4 @@ EntityManager entityManager = conexion.EstablecerConexion();
         return model;
     }
 
-    
-   
-    
 }
