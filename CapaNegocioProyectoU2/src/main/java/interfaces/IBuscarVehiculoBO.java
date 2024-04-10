@@ -14,7 +14,7 @@ import excepciones.NegocioException;
  */
 public interface IBuscarVehiculoBO {
 
-    public PlacaEntidad BuscarPlacas(String numero) throws NegocioException;
+
 
     public VehiculoEntidad BuscarNumeroSerie(String numeroSerie) throws NegocioException;
 }

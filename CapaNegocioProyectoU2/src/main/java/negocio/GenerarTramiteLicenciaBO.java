@@ -2,32 +2,32 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package DAO;
+package negocio;
 
-import DAO.Interface.ITramite;
 import JPA.Enum.EstadosJPA;
-import JPA.LicenciaEntidad;
 import JPA.TramiteEntidad;
+import excepciones.NegocioException;
+import interfaces.IGenerarTramiteLicenciaBO;
 
 /**
  *
- * @author Arell
+ * @author Usuario
  */
-public class TramiteVehiculoDAO implements ITramite {
+public class GenerarTramiteLicenciaBO implements IGenerarTramiteLicenciaBO{
 
     @Override
-    public void CalcularCosto() {
+    public void CalcularCosto() throws NegocioException {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public TramiteEntidad Validar(String numero) {
+    public TramiteEntidad Validar(String identificador) throws NegocioException {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public void CambiarEstado(Long Id, EstadosJPA nuevoEstado) {
+    public void CambiarEstado(Long Id, EstadosJPA nuevoEstado) throws NegocioException {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-
+    
 }

@@ -5,10 +5,13 @@
 package negocio;
 
 import DAO.Interface.IVehiculo;
+import Excepciones.PersistenciaException;
 import JPA.PlacaEntidad;
 import JPA.VehiculoEntidad;
 import excepciones.NegocioException;
 import interfaces.IBuscarVehiculoBO;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -17,29 +20,25 @@ import java.util.regex.Pattern;
  * @author Usuario
  */
 public class BuscarVehiculoBO implements IBuscarVehiculoBO {
-
+    
     private IVehiculo buscarVehiculoDAO;
-
+    
     public BuscarVehiculoBO(IVehiculo buscarVehiculo) {
         this.buscarVehiculoDAO = buscarVehiculo;
     }
-
-    @Override
-    public PlacaEntidad BuscarPlacas(String numero) throws NegocioException {
-        if (numero==null|| numero.trim().isBlank()) {
-            throw new NegocioException("Ingrese un numero de placas correcto");
-        }
-        validarFormatoPlaca(numero);
-        PlacaEntidad placa = buscarVehiculoDAO.BuscarPlacas(numero);
-        return placa;
-    }
-
+    
     @Override
     public VehiculoEntidad BuscarNumeroSerie(String numeroSerie) throws NegocioException {
-        VehiculoEntidad vehiculo = buscarVehiculoDAO.BuscarNumeroSerie(numeroSerie);
-        return vehiculo;
+        VehiculoEntidad vehiculo;
+        try {
+            vehiculo = buscarVehiculoDAO.BuscarNumeroSerie(numeroSerie);
+            return vehiculo;
+            
+        } catch (PersistenciaException ex) {
+            throw new NegocioException("No se encontro el numeroSerie");     
+        }
     }
-
+    
     private void validarFormatoPlaca(String numero) throws NegocioException {
         // Patrón para validar el formato del número de placa
         String patron = "[A-Z]{3}-\\d{3}";

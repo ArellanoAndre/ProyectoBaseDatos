@@ -5,10 +5,13 @@
 package negocio;
 
 import DAO.Interface.IVehiculo;
+import Excepciones.PersistenciaException;
 import JPA.VehiculoEntidad;
 import excepciones.NegocioException;
 import interfaces.IRegistrarVehiculoBO;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -26,7 +29,11 @@ public class RegistrarVehiculoBO implements IRegistrarVehiculoBO {
 
     @Override
     public void RegistrarAutos(List<VehiculoEntidad> vehiculos) throws NegocioException {
-       registrarVehiculoDAO.RegistrarAutos(vehiculos);
+        try {
+            registrarVehiculoDAO.RegistrarAutos(vehiculos);
+        } catch (PersistenciaException ex) {
+            Logger.getLogger(RegistrarVehiculoBO.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 }

@@ -6,6 +6,7 @@ package DAO;
 
 import DAO.Interface.IConexion;
 import DAO.Interface.IVehiculo;
+import Excepciones.PersistenciaException;
 import JPA.PlacaEntidad;
 import JPA.VehiculoEntidad;
 import java.util.List;
@@ -17,28 +18,13 @@ import javax.persistence.TypedQuery;
  * @author Arell
  */
 public class VehiculoDAO implements IVehiculo {
-      //Atributo de clase Tipo Iconexion 
-private IConexion conexion;
-EntityManager entityManager = conexion.EstablecerConexion();
+    //Atributo de clase Tipo Iconexion 
+
+    private IConexion conexion;
+    EntityManager entityManager = conexion.EstablecerConexion();
 
     @Override
-    public PlacaEntidad BuscarPlacas(String numero) {
-    EntityManager entityManager = null;
-        try {
-            entityManager = conexion.EstablecerConexion();
-            TypedQuery<PlacaEntidad> query = entityManager.createQuery(
-                    "SELECT p FROM PlacaEntidad p WHERE p.numero = :numero", PlacaEntidad.class);
-            query.setParameter("numero", numero);
-            List<PlacaEntidad> resultados = query.getResultList();
-            return resultados.isEmpty() ? null : resultados.get(0);
-        } finally {
-            if (entityManager != null) {
-                entityManager.close();
-            }
-        }
-    }
-@Override
-    public VehiculoEntidad BuscarNumeroSerie(String numeroSerie) {
+    public VehiculoEntidad BuscarNumeroSerie(String numeroSerie) throws PersistenciaException {
         try {
             TypedQuery<VehiculoEntidad> query = entityManager.createQuery(
                     "SELECT v FROM VehiculoEntidad v WHERE v.numeroSerie = :numeroSerie", VehiculoEntidad.class);
@@ -51,10 +37,11 @@ EntityManager entityManager = conexion.EstablecerConexion();
             }
         }
     }
-@Override
-    public void RegistrarAutos(List<VehiculoEntidad> vehiculos) {
+
+    @Override
+    public void RegistrarAutos(List<VehiculoEntidad> vehiculos) throws PersistenciaException {
         try {
-           entityManager.getTransaction().begin();
+            entityManager.getTransaction().begin();
 
             for (VehiculoEntidad vehiculo : vehiculos) {
                 entityManager.persist(vehiculo);

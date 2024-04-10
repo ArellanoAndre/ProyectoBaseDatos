@@ -5,7 +5,6 @@
 package DAO;
 
 import DAO.Interface.IConexion;
-import DAO.Interface.ITramite;
 import JPA.Enum.EstadosJPA;
 import JPA.PlacaEntidad;
 import JPA.TramiteEntidad;
@@ -13,26 +12,29 @@ import java.util.List;
 import java.util.Random;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
+import DAO.Interface.ITramitePlaca;
+import Excepciones.PersistenciaException;
 
 /**
  *
  * @author Arell
  */
-public class TramitePlacasDAO implements ITramite{
+public class TramitePlacasDAO implements ITramitePlaca {
 //Atributo de clase Tipo Iconexion 
-private IConexion conexion;
-EntityManager entityManager = conexion.EstablecerConexion();
+
+    private IConexion conexion;
+    EntityManager entityManager = conexion.EstablecerConexion();
 //Atributos de clase 
-private static final Random RANDOM = new Random();
+    private static final Random RANDOM = new Random();
     private static final String LETRAS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     private static final String DIGITOS = "0123456789";
-    
+
     @Override
-    public void CalcularCosto() {
+    public void CalcularCosto() throws PersistenciaException {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
-     public PlacaEntidad agregar(PlacaEntidad placas) {
+
+    public PlacaEntidad agregar(PlacaEntidad placas) throws PersistenciaException {
         entityManager.getTransaction().begin();
         entityManager.persist(placas);
         entityManager.getTransaction().commit();
@@ -42,7 +44,7 @@ private static final Random RANDOM = new Random();
     }
 
     @Override
-    public void CambiarEstado(Long Id, EstadosJPA nuevoEstado) {
+    public void CambiarEstado(Long Id, EstadosJPA nuevoEstado) throws PersistenciaException {
         try {
             entityManager.getTransaction().begin();
 
@@ -59,10 +61,27 @@ private static final Random RANDOM = new Random();
                 entityManager.close();
             }
         }
-    }  
+    }
 
     @Override
-    public TramiteEntidad Validar(String numero) {
+    public PlacaEntidad BuscarPlacas(String numero)throws PersistenciaException {
+        EntityManager entityManager = null;
+        try {
+            entityManager = conexion.EstablecerConexion();
+            TypedQuery<PlacaEntidad> query = entityManager.createQuery(
+                    "SELECT p FROM PlacaEntidad p WHERE p.numero = :numero", PlacaEntidad.class);
+            query.setParameter("numero", numero);
+            List<PlacaEntidad> resultados = query.getResultList();
+            return resultados.isEmpty() ? null : resultados.get(0);
+        } finally {
+            if (entityManager != null) {
+                entityManager.close();
+            }
+        }
+    }
+
+    @Override
+    public TramiteEntidad Validar(String numero) throws PersistenciaException {
         try {
             TypedQuery<PlacaEntidad> query = entityManager.createQuery(
                     "SELECT p FROM PlacaEntidad p WHERE p.numero = :numero", PlacaEntidad.class);
@@ -75,8 +94,8 @@ private static final Random RANDOM = new Random();
             }
         }
     }
-    
-    public static String generarCadenaAleatoria() {
+
+    public static String generarCadenaAleatoria() throws PersistenciaException {
         StringBuilder sb = new StringBuilder();
         // Generar 3 letras aleatorias
         for (int i = 0; i < 3; i++) {
@@ -92,6 +111,4 @@ private static final Random RANDOM = new Random();
         return sb.toString();
     }
 
-  
-    
 }

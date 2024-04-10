@@ -5,8 +5,11 @@
 package negocio;
 
 import DAO.Interface.IReporte;
+import Excepciones.PersistenciaException;
 import excepciones.NegocioException;
 import interfaces.IGenerarReporteBO;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -22,7 +25,11 @@ public class GenerarReporteBO implements IGenerarReporteBO {
 
     @Override
     public void GenerarReportePDF() throws NegocioException {
-        reporteDAO.GenerarReportePDF();
+        try {
+            reporteDAO.GenerarReportePDF();
+        } catch (PersistenciaException ex) {
+            Logger.getLogger(GenerarReporteBO.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 }

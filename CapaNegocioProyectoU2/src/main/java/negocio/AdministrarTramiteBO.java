@@ -4,12 +4,13 @@
  */
 package negocio;
 
-import DAO.Interface.ITramite;
+import DAO.TramitePlacasDAO;
 import JPA.Enum.EstadosJPA;
 import JPA.LicenciaEntidad;
 import JPA.TramiteEntidad;
 import excepciones.NegocioException;
 import interfaces.IAdministrarTramiteBO;
+import DAO.Interface.ITramitePlaca;
 
 /**
  *
@@ -17,15 +18,15 @@ import interfaces.IAdministrarTramiteBO;
  */
 public class AdministrarTramiteBO implements IAdministrarTramiteBO {
     
-    private ITramite tramiteDAO;
+    private ITramitePlaca tramiteDAO = new TramitePlacasDAO() ;
     
-    public AdministrarTramiteBO(ITramite tramite) {
+    public AdministrarTramiteBO(ITramitePlaca tramite) {
         this.tramiteDAO = tramite;
     }
     
     @Override
     public void CalcularCosto() throws NegocioException {
-        tramiteDAO.CalcularCosto();
+        tramiteDAO.;
     }
     
     @Override

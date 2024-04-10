@@ -4,6 +4,7 @@
  */
 package DAO.Interface;
 
+import Excepciones.PersistenciaException;
 import JPA.ClienteEntidad;
 import JPA.TramiteEntidad;
 import java.util.List;
@@ -14,19 +15,19 @@ import java.util.List;
  */
 public interface ICliente {
     
-   public List<ClienteEntidad> BuscarTodos();
+   public List<ClienteEntidad> BuscarTodos() throws PersistenciaException;
     
-   public ClienteEntidad BuscarPorRFC(String rfc);
+   public ClienteEntidad BuscarPorRFC(String rfc) throws PersistenciaException;
    
-   public List<ClienteEntidad> BuscarPorNombre(String nombre);
+   public List<ClienteEntidad> BuscarPorNombre(String nombre) throws PersistenciaException;
    
-   public List<ClienteEntidad> BuscarPorApellido(String apellido);
+   public List<ClienteEntidad> BuscarPorApellido(String apellido) throws PersistenciaException;
    
-   public List<ClienteEntidad> BuscarPorAñoNacimiento(int año);
+   public List<ClienteEntidad> BuscarPorAñoNacimiento(int año) throws PersistenciaException;
    
-    public  List<TramiteEntidad> VerHistorial(ClienteEntidad cliente);
+    public  List<TramiteEntidad> VerHistorial(ClienteEntidad cliente) throws PersistenciaException;
    
-   public ClienteEntidad AgregarPersona(ClienteEntidad cliente);
+   public ClienteEntidad AgregarPersona(ClienteEntidad cliente) throws PersistenciaException;
    
     
 }

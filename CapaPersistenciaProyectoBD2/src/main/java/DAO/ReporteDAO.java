@@ -11,6 +11,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import DAO.Interface.IReporte;
+import Excepciones.PersistenciaException;
  
 /**
  *
@@ -21,12 +22,12 @@ public class ReporteDAO implements IReporte {
 private IConexion conexion;
     
     @Override
-    public void GenerarReportePDF() {
+    public void GenerarReportePDF() throws PersistenciaException {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public List<TramiteEntidad> BuscarPeriodo(Calendar fechaDesde, Calendar fechaHasta) {
+    public List<TramiteEntidad> BuscarPeriodo(Calendar fechaDesde, Calendar fechaHasta) throws PersistenciaException {
          EntityManager entityManager = conexion.EstablecerConexion();
      try {
             entityManager = conexion.EstablecerConexion();

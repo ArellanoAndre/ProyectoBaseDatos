@@ -11,6 +11,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import DAO.Interface.ICliente;
+import Excepciones.PersistenciaException;
 import JPA.TramiteEntidad;
 import javax.swing.table.DefaultTableModel;
 
@@ -25,7 +26,7 @@ public class ClienteDAO implements ICliente {
     EntityManager entityManager = conexion.EstablecerConexion();
 
     @Override
-    public ClienteEntidad BuscarPorRFC(String rfc) {
+    public ClienteEntidad BuscarPorRFC(String rfc) throws PersistenciaException {
         Query query = entityManager.createNativeQuery("SELECT * FROM Clientes where rfc = ?", ClienteEntidad.class);
         query.setParameter(1, rfc);
 
@@ -39,7 +40,7 @@ public class ClienteDAO implements ICliente {
     }
 
     @Override
-    public List<ClienteEntidad> BuscarPorNombre(String nombre) {
+    public List<ClienteEntidad> BuscarPorNombre(String nombre) throws PersistenciaException {
         entityManager.getTransaction().begin();
 
         StringBuilder jpqlBuilder = new StringBuilder("SELECT c FROM Cliente c WHERE c.nombre LIKE :nombre");
@@ -71,7 +72,7 @@ public class ClienteDAO implements ICliente {
     }
 
     @Override
-    public List<ClienteEntidad> BuscarPorAñoNacimiento(int año) {
+    public List<ClienteEntidad> BuscarPorAñoNacimiento(int año) throws PersistenciaException {
         entityManager.getTransaction().begin();
 
         StringBuilder jpqlBuilder = new StringBuilder("SELECT c FROM Cliente c WHERE YEAR(c.fecha_nacimiento) = :año");
@@ -87,7 +88,7 @@ public class ClienteDAO implements ICliente {
     }
 
     @Override
-    public List<TramiteEntidad> VerHistorial(ClienteEntidad cliente) {
+    public List<TramiteEntidad> VerHistorial(ClienteEntidad cliente) throws PersistenciaException {
         try {
             TypedQuery<TramiteEntidad> query = entityManager.createQuery(
                     "SELECT t FROM TramiteEntidad t WHERE t.cliente = :cliente", TramiteEntidad.class);
@@ -101,7 +102,7 @@ public class ClienteDAO implements ICliente {
     }
 
     @Override
-    public ClienteEntidad AgregarPersona(ClienteEntidad cliente) {
+    public ClienteEntidad AgregarPersona(ClienteEntidad cliente) throws PersistenciaException {
         entityManager.getTransaction().begin();
         entityManager.persist(cliente);
 
@@ -111,7 +112,7 @@ public class ClienteDAO implements ICliente {
     }
 
     @Override
-    public List<ClienteEntidad> BuscarTodos() {
+    public List<ClienteEntidad> BuscarTodos() throws PersistenciaException {
         entityManager.getTransaction().begin();
         TypedQuery<ClienteEntidad> query = entityManager.createQuery(
                 "SELECT c FROM ClienteEntidad c", ClienteEntidad.class);
@@ -121,11 +122,11 @@ public class ClienteDAO implements ICliente {
         return clientes;
     }
 
-    private DefaultTableModel construirModeloTabla(List<TramiteEntidad> tramites) {
+    private DefaultTableModel construirModeloTabla(List<TramiteEntidad> tramites) throws PersistenciaException {
         DefaultTableModel model = new DefaultTableModel();
         model.addColumn("ID");
         model.addColumn("Fecha de Creación");
-        model.addColumn("Fecha de Actualización");
+        model.addColumn("Fecha de Vencimiento");
         model.addColumn("Costo");
         // Agrega más columnas según los atributos que desees mostrar
 
@@ -133,7 +134,7 @@ public class ClienteDAO implements ICliente {
             Object[] row = {
                 tramite.getId(),
                 tramite.getFechaCreacion(),
-                tramite.getFechaActualizacion(),
+                tramite.getFechaVencimiento(),
                 tramite.getCostoNormal()
             // Agrega más atributos según los que desees mostrar en la tabla
             };

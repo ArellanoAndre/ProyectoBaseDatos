@@ -5,11 +5,14 @@
 package negocio;
 
 import DAO.Interface.ICliente;
+import Excepciones.PersistenciaException;
 import JPA.ClienteEntidad;
 import JPA.TramiteEntidad;
 import excepciones.NegocioException;
 import interfaces.IVerHistorialBO;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -22,12 +25,17 @@ public class VerHistorialBO implements IVerHistorialBO {
     public VerHistorialBO(ICliente historial) {
         this.historialDAO = historial;
     }
-    
- 
+
     @Override
-    public  List<TramiteEntidad> VerHistorial(ClienteEntidad cliente) throws NegocioException {
-        List<TramiteEntidad> historial=historialDAO.VerHistorial(cliente);
-        return historial;
+    public List<TramiteEntidad> VerHistorial(ClienteEntidad cliente) throws NegocioException {
+        List<TramiteEntidad> historial;
+        try {
+            historial = historialDAO.VerHistorial(cliente);
+            return historial;
+
+        } catch (PersistenciaException ex) {
+            throw new NegocioException("Historial no dispobile");
+        }
     }
 
 }

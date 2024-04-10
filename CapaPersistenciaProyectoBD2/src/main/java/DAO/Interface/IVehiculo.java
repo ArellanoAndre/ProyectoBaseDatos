@@ -16,11 +16,9 @@ import java.util.List;
 public interface IVehiculo {
     
 
-public void RegistrarAutos(List<VehiculoEntidad> vehiculos);
-    
- public PlacaEntidad BuscarPlacas(String numero);
+public void RegistrarAutos(List<VehiculoEntidad> vehiculos) throws PersistenciaException;
 
-public VehiculoEntidad BuscarNumeroSerie(String numeroSerie);
+public VehiculoEntidad BuscarNumeroSerie(String numeroSerie)  throws PersistenciaException;
 
 
 

@@ -1,5 +1,6 @@
 package JPA;
 
+import JPA.Enum.TipoTramite;
 import java.io.Serializable;
 import java.util.Calendar;
 import javax.persistence.Column;
@@ -24,18 +25,24 @@ public class TramiteEntidad implements Serializable {
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name = "vigencia", nullable = false)
+    private int vigencia;
     
+     @Column(name = "tipo", nullable = false)
+    private TipoTramite tipo;
+
     @Column(name = "fecha_creacion")
     @Temporal(TemporalType.DATE)
     private Calendar fechaCreacion;
-    
-    @Column(name = "fecha_actualizacion")
+
+    @Column(name = "fecha_vencimiento")
     @Temporal(TemporalType.DATE)
-    private Calendar fechaActualizacion;
+    private Calendar fechaVencimiento;
 
     @Column(name = "costo")
-    protected double costo;
-    
+    private double costo;
+
     @ManyToOne(targetEntity = ClienteEntidad.class)
     @JoinColumn(name = "id_cliente", nullable = false)
     protected ClienteEntidad cliente;
@@ -43,11 +50,20 @@ public class TramiteEntidad implements Serializable {
     public TramiteEntidad() {
     }
 
+    public TramiteEntidad(int vigencia, Calendar fechaCreacion,TipoTramite tipo, double costo, ClienteEntidad cliente) {
+        this.vigencia = vigencia;
+        this.fechaCreacion = fechaCreacion;
+        this.costo = costo;
+        this.tipo=tipo;
+        this.cliente = cliente;
+        this.setFechaVencimiento(fechaCreacion, vigencia);
+    }
+   
+
     public TramiteEntidad(double costo) {
         this.costo = costo;
     }
-    
-    
+
     public Long getId() {
         return id;
     }
@@ -64,12 +80,30 @@ public class TramiteEntidad implements Serializable {
         this.fechaCreacion = fechaCreacion;
     }
 
-    public Calendar getFechaActualizacion() {
-        return fechaActualizacion;
+    public int getVigencia() {
+        return vigencia;
     }
 
-    public void setFechaActualizacion(Calendar fechaActualizacion) {
-        this.fechaActualizacion = fechaActualizacion;
+    public void setVigencia(int vigencia) {
+        this.vigencia = vigencia;
+    }
+
+    public Calendar getFechaVencimiento() {
+        return fechaVencimiento;
+    }
+
+    public void setFechaVencimiento(Calendar fechaCreacion, int años) {
+        Calendar resultado = (Calendar) fechaCreacion.clone();
+        resultado.add(Calendar.YEAR, años);
+        this.fechaVencimiento= resultado;
+    }
+
+    public double getCosto() {
+        return costo;
+    }
+
+    public void setCosto(double costo) {
+        this.costo = costo;
     }
 
     public double getCostoNormal() {
@@ -78,6 +112,10 @@ public class TramiteEntidad implements Serializable {
 
     public void setCostoNormal(double costoNormal) {
         this.costo = costoNormal;
+    }
+
+    public void setTipo(TipoTramite tipo) {
+        this.tipo = tipo;
     }
 
     public ClienteEntidad getCliente() {

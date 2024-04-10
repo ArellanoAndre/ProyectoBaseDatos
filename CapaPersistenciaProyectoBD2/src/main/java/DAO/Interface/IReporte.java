@@ -4,6 +4,7 @@
  */
 package DAO.Interface;
 
+import Excepciones.PersistenciaException;
 import JPA.TramiteEntidad;
 import java.util.Calendar;
 import java.util.List;
@@ -14,8 +15,8 @@ import java.util.List;
  */
 public interface IReporte {
     
-    public void GenerarReportePDF();
+    public void GenerarReportePDF() throws PersistenciaException;
     
-    public List<TramiteEntidad> BuscarPeriodo(Calendar fechaDesde, Calendar fechaHasta);
+    public List<TramiteEntidad> BuscarPeriodo(Calendar fechaDesde, Calendar fechaHasta) throws PersistenciaException;
     
 }

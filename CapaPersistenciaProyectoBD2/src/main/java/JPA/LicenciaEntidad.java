@@ -21,9 +21,6 @@ public class LicenciaEntidad extends TramiteEntidad implements Serializable {
     @Column(name = "folio", unique = true, nullable = false)
     private String folio;
 
-    @Column(name = "vigencia", nullable = false)
-    private int vigencia;
-
     @Column(name = "estado", nullable = false)
     @Enumerated(EnumType.STRING)
     private EstadosJPA estado;
@@ -35,11 +32,10 @@ public class LicenciaEntidad extends TramiteEntidad implements Serializable {
     public LicenciaEntidad() {
     }
 
-    public LicenciaEntidad(String folio, int vigencia, ClienteEntidad cliente) {
+    public LicenciaEntidad(String folio, ClienteEntidad cliente) {
         super();
         this.cliente = cliente;
         this.folio = folio;
-        this.vigencia = vigencia;
     }
 
     public String getFolio() {
@@ -48,14 +44,6 @@ public class LicenciaEntidad extends TramiteEntidad implements Serializable {
 
     public void setFolio(String folio) {
         this.folio = folio;
-    }
-
-    public int getVigencia() {
-        return vigencia;
-    }
-
-    public void setVigencia(int vigencia) {
-        this.vigencia = vigencia;
     }
 
     public EstadosJPA getEstado() {
