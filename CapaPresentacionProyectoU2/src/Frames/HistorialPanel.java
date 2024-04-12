@@ -5,6 +5,9 @@
 package Frames;
 
 import Tools.Imagen;
+import dto.ClientesDTO;
+import dtos.LicenciaDTO;
+import interfaces.IGenerarReporteBO;
 import javax.swing.JFrame;
 
 /**
@@ -12,7 +15,8 @@ import javax.swing.JFrame;
  * @author Arell
  */
 public class HistorialPanel extends javax.swing.JFrame {
-
+private IGenerarReporteBO reporte;
+  private LicenciaDTO cliente;
     /**
      * Creates new form ConsultaPanel
      */
@@ -24,9 +28,7 @@ public class HistorialPanel extends javax.swing.JFrame {
                  // Configurar la Foto
         Imagen imagen = new Imagen();
         imagen.PintarImagen(FotoGobSonora, "src\\Pantallas\\GobSonora.jpg");
-
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -42,15 +44,15 @@ public class HistorialPanel extends javax.swing.JFrame {
         FondoGris4 = new javax.swing.JPanel();
         FotoGobSonora = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        Curp1 = new javax.swing.JLabel();
-        Curp2 = new javax.swing.JLabel();
+        RFC = new javax.swing.JLabel();
+        Año = new javax.swing.JLabel();
         Curp3 = new javax.swing.JLabel();
-        CampoFolio = new javax.swing.JTextField();
-        CampoFolio1 = new javax.swing.JTextField();
-        CampoFolio2 = new javax.swing.JTextField();
+        CampoRFC = new javax.swing.JTextField();
+        CampoAño = new javax.swing.JTextField();
+        CampoNombre = new javax.swing.JTextField();
         Aceptar5 = new javax.swing.JButton();
         Cancelar = new javax.swing.JButton();
-        CampoFolio3 = new javax.swing.JTextField();
+        CampApellido = new javax.swing.JTextField();
         Curp4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaTramites = new javax.swing.JTable();
@@ -98,20 +100,26 @@ public class HistorialPanel extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Roboto", 2, 18)); // NOI18N
         jLabel2.setText("Filtros de Consulta");
 
-        Curp1.setBackground(new java.awt.Color(153, 153, 153));
-        Curp1.setFont(new java.awt.Font("Roboto", 2, 18)); // NOI18N
-        Curp1.setText("Nombre");
-        Curp1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        RFC.setBackground(new java.awt.Color(153, 153, 153));
+        RFC.setFont(new java.awt.Font("Roboto", 2, 18)); // NOI18N
+        RFC.setText("Nombre");
+        RFC.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        Curp2.setBackground(new java.awt.Color(153, 153, 153));
-        Curp2.setFont(new java.awt.Font("Roboto", 2, 18)); // NOI18N
-        Curp2.setText("Año Nacimiento");
-        Curp2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        Año.setBackground(new java.awt.Color(153, 153, 153));
+        Año.setFont(new java.awt.Font("Roboto", 2, 18)); // NOI18N
+        Año.setText("Año Nacimiento");
+        Año.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         Curp3.setBackground(new java.awt.Color(153, 153, 153));
         Curp3.setFont(new java.awt.Font("Roboto", 2, 18)); // NOI18N
         Curp3.setText("RFC");
         Curp3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        CampoAño.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CampoAñoActionPerformed(evt);
+            }
+        });
 
         Aceptar5.setBackground(new java.awt.Color(255, 102, 0));
         Aceptar5.setFont(new java.awt.Font("Roboto Black", 3, 12)); // NOI18N
@@ -159,15 +167,15 @@ public class HistorialPanel extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(Curp3, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(Curp1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(CampoFolio)
-                        .addComponent(CampoFolio2)
+                        .addComponent(RFC, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(CampoRFC)
+                        .addComponent(CampoNombre)
                         .addComponent(Curp4, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(CampoFolio3, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(CampApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel2)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(Curp2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(CampoFolio1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(Año, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(CampoAño, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -190,24 +198,24 @@ public class HistorialPanel extends javax.swing.JFrame {
                         .addGap(20, 20, 20)
                         .addComponent(Curp3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(CampoFolio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(CampoRFC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(Curp1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(RFC, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(CampoFolio2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(CampoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                         .addComponent(Curp4, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(CampoFolio3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(CampApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(Curp2))
+                        .addComponent(Año))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(CampoFolio1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(CampoAño, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(31, 31, 31)
@@ -238,12 +246,32 @@ public class HistorialPanel extends javax.swing.JFrame {
 
     private void Aceptar5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Aceptar5ActionPerformed
         // TODO add your handling code here:
+        String rfc = CampoRFC.getText();
+       String nombre = CampoNombre.getText();
+       String apellido = CampApellido.getText();    
+       int año = Integer.parseInt(CampoAño.getText());
+//       cliente = new ClientesDTO();
+//     cliente = new ClientesDTO(rfc,nombre,apellido,año);
+//     
+             
+    if (rfc.isEmpty() || nombre.isEmpty() || apellido.isEmpty()) {
+    javax.swing.JOptionPane.showMessageDialog(this, "Todos los campos son obligatorios", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);}
+      
+    javax.swing.JOptionPane.showMessageDialog(this, "Busqueda Realizada Correctamente", "Confirmacion", javax.swing.JOptionPane.ERROR_MESSAGE);
+
+
+       
+       
     }//GEN-LAST:event_Aceptar5ActionPerformed
 
     private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed
           // Cerrar el JFrame actual
         this.dispose();
     }//GEN-LAST:event_CancelarActionPerformed
+
+    private void CampoAñoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoAñoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CampoAñoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -284,17 +312,17 @@ public class HistorialPanel extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Aceptar4;
     private javax.swing.JButton Aceptar5;
-    private javax.swing.JTextField CampoFolio;
-    private javax.swing.JTextField CampoFolio1;
-    private javax.swing.JTextField CampoFolio2;
-    private javax.swing.JTextField CampoFolio3;
+    private javax.swing.JLabel Año;
+    private javax.swing.JTextField CampApellido;
+    private javax.swing.JTextField CampoAño;
+    private javax.swing.JTextField CampoNombre;
+    private javax.swing.JTextField CampoRFC;
     private javax.swing.JButton Cancelar;
-    private javax.swing.JLabel Curp1;
-    private javax.swing.JLabel Curp2;
     private javax.swing.JLabel Curp3;
     private javax.swing.JLabel Curp4;
     private javax.swing.JPanel FondoGris4;
     private javax.swing.JLabel FotoGobSonora;
+    private javax.swing.JLabel RFC;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

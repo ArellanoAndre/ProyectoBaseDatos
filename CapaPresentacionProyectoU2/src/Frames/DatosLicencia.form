@@ -54,16 +54,16 @@
               <Group type="102" attributes="0">
                   <EmptySpace min="147" pref="147" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="RFC" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLabel4" min="-2" pref="77" max="-2" attributes="0"/>
+                              <Component id="Transporte" min="-2" pref="77" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="jComboBox1" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
-                              <Component id="Aceptar1" min="-2" max="-2" attributes="0"/>
+                              <Component id="Verificar" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="CampoCurp1" alignment="0" min="-2" pref="290" max="-2" attributes="0"/>
+                          <Component id="CampoRFC" alignment="0" min="-2" pref="290" max="-2" attributes="0"/>
                       </Group>
                       <Component id="jPanel1" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -78,14 +78,14 @@
                   <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
                   <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jLabel3" min="-2" pref="29" max="-2" attributes="0"/>
+                  <Component id="RFC" min="-2" pref="29" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="CampoCurp1" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="CampoRFC" min="-2" pref="34" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel4" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
+                      <Component id="Transporte" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
                       <Component id="jComboBox1" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
-                      <Component id="Aceptar1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="Verificar" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="89" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -181,9 +181,12 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CancelarActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="CampoCurp1">
+        <Component class="javax.swing.JTextField" name="CampoRFC">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CampoRFCActionPerformed"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel3">
+        <Component class="javax.swing.JLabel" name="RFC">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="cc" green="cc" red="cc" type="rgb"/>
@@ -225,7 +228,7 @@
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel4">
+        <Component class="javax.swing.JLabel" name="Transporte">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="cc" green="cc" red="cc" type="rgb"/>
@@ -251,7 +254,7 @@
             </DimensionLayout>
           </Layout>
         </Container>
-        <Component class="javax.swing.JButton" name="Aceptar1">
+        <Component class="javax.swing.JButton" name="Verificar">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="66" green="66" red="0" type="rgb"/>
@@ -262,7 +265,7 @@
             <Property name="text" type="java.lang.String" value="Verificar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Aceptar1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="VerificarActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

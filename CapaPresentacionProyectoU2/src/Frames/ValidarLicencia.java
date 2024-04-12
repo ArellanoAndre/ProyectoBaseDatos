@@ -5,6 +5,8 @@
 package Frames;
 
 import Tools.Imagen;
+import dtos.LicenciaDTO;
+import interfaces.IGenerarTramiteLicenciaBO;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -13,6 +15,8 @@ import javax.swing.JOptionPane;
  * @author Arell
  */
 public class ValidarLicencia extends javax.swing.JFrame {
+  private IGenerarTramiteLicenciaBO agregarpersona;
+  private LicenciaDTO licencia;
 
     /**
      * Creates new form PagoGeneradoPanel
@@ -42,13 +46,13 @@ public class ValidarLicencia extends javax.swing.JFrame {
         FondoGris4 = new javax.swing.JPanel();
         FotoGobSonora = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        Cancelar = new javax.swing.JButton();
-        Aceptar = new javax.swing.JButton();
-        Campo = new javax.swing.JTextField();
-        Opcional = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        Aceptar1 = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
+        btnAceptar = new javax.swing.JButton();
+        CampoFolio = new javax.swing.JTextField();
+        LigenciaVigente = new javax.swing.JLabel();
+        DatosValidar = new javax.swing.JLabel();
+        CampoGris = new javax.swing.JPanel();
+        Verificar = new javax.swing.JButton();
 
         CampoCurp3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,61 +99,61 @@ public class ValidarLicencia extends javax.swing.JFrame {
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
-        Cancelar.setBackground(new java.awt.Color(255, 0, 0));
-        Cancelar.setFont(new java.awt.Font("Roboto Black", 3, 12)); // NOI18N
-        Cancelar.setText("Cancelar");
-        Cancelar.addActionListener(new java.awt.event.ActionListener() {
+        btnCancelar.setBackground(new java.awt.Color(255, 0, 0));
+        btnCancelar.setFont(new java.awt.Font("Roboto Black", 3, 12)); // NOI18N
+        btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CancelarActionPerformed(evt);
+                btnCancelarActionPerformed(evt);
             }
         });
 
-        Aceptar.setBackground(new java.awt.Color(0, 255, 51));
-        Aceptar.setFont(new java.awt.Font("Roboto Black", 3, 12)); // NOI18N
-        Aceptar.setText("Aceptar");
-        Aceptar.addActionListener(new java.awt.event.ActionListener() {
+        btnAceptar.setBackground(new java.awt.Color(0, 255, 51));
+        btnAceptar.setFont(new java.awt.Font("Roboto Black", 3, 12)); // NOI18N
+        btnAceptar.setText("Aceptar");
+        btnAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AceptarActionPerformed(evt);
+                btnAceptarActionPerformed(evt);
             }
         });
 
-        Campo.setText("No. de Folio");
-        Campo.addMouseListener(new java.awt.event.MouseAdapter() {
+        CampoFolio.setText("No. de Folio");
+        CampoFolio.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                CampoMouseClicked(evt);
+                CampoFolioMouseClicked(evt);
             }
         });
-        Campo.addActionListener(new java.awt.event.ActionListener() {
+        CampoFolio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CampoActionPerformed(evt);
+                CampoFolioActionPerformed(evt);
             }
         });
 
-        Opcional.setFont(new java.awt.Font("Roboto", 2, 14)); // NOI18N
-        Opcional.setForeground(new java.awt.Color(255, 51, 51));
-        Opcional.setText("Licencia Vigente*");
+        LigenciaVigente.setFont(new java.awt.Font("Roboto", 2, 14)); // NOI18N
+        LigenciaVigente.setForeground(new java.awt.Color(255, 51, 51));
+        LigenciaVigente.setText("Licencia Vigente*");
 
-        jLabel3.setBackground(new java.awt.Color(204, 204, 204));
-        jLabel3.setFont(new java.awt.Font("Roboto", 2, 24)); // NOI18N
-        jLabel3.setText("Datos a Validar");
+        DatosValidar.setBackground(new java.awt.Color(204, 204, 204));
+        DatosValidar.setFont(new java.awt.Font("Roboto", 2, 24)); // NOI18N
+        DatosValidar.setText("Datos a Validar");
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout CampoGrisLayout = new javax.swing.GroupLayout(CampoGris);
+        CampoGris.setLayout(CampoGrisLayout);
+        CampoGrisLayout.setHorizontalGroup(
+            CampoGrisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 360, Short.MAX_VALUE)
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        CampoGrisLayout.setVerticalGroup(
+            CampoGrisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 34, Short.MAX_VALUE)
         );
 
-        Aceptar1.setBackground(new java.awt.Color(0, 102, 102));
-        Aceptar1.setFont(new java.awt.Font("Roboto Black", 3, 12)); // NOI18N
-        Aceptar1.setText("Verificar");
-        Aceptar1.addActionListener(new java.awt.event.ActionListener() {
+        Verificar.setBackground(new java.awt.Color(0, 102, 102));
+        Verificar.setFont(new java.awt.Font("Roboto Black", 3, 12)); // NOI18N
+        Verificar.setText("Verificar");
+        Verificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Aceptar1ActionPerformed(evt);
+                VerificarActionPerformed(evt);
             }
         });
 
@@ -163,18 +167,18 @@ public class ValidarLicencia extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Opcional)
-                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(DatosValidar, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(LigenciaVigente)
+                            .addComponent(CampoGris, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(Aceptar1)
-                                .addComponent(Campo, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(Verificar)
+                                .addComponent(CampoFolio, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(47, 47, 47))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(42, 42, 42)
-                        .addComponent(Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Aceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(94, 94, 94))
         );
         jPanel1Layout.setVerticalGroup(
@@ -182,19 +186,19 @@ public class ValidarLicencia extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(FondoGris4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(43, 43, 43)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(CampoGris, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(DatosValidar, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Opcional, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(LigenciaVigente, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Campo, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(CampoFolio, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Aceptar1)
+                .addComponent(Verificar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Aceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(52, 52, 52))
         );
 
@@ -213,33 +217,38 @@ public class ValidarLicencia extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         // Cerrar el JFrame actual
         this.dispose();
-    }//GEN-LAST:event_CancelarActionPerformed
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void CampoCurp3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoCurp3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_CampoCurp3ActionPerformed
 
-    private void AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarActionPerformed
+    private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
         CostosPlacas licencia = new CostosPlacas();
         licencia.setVisible(true);
-    }//GEN-LAST:event_AceptarActionPerformed
+    }//GEN-LAST:event_btnAceptarActionPerformed
 
-    private void CampoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoActionPerformed
+    private void CampoFolioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoFolioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CampoActionPerformed
+    }//GEN-LAST:event_CampoFolioActionPerformed
 
-    private void Aceptar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Aceptar1ActionPerformed
-        // TODO add your handling code here:
+    private void VerificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VerificarActionPerformed
+        String folio = CampoFolio.getText();
+        if (folio.isEmpty()) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Todos los campos son obligatorios", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+        }
+        licencia = new LicenciaDTO(folio);
+        
         JOptionPane.showMessageDialog(this, "La Inspeccion se realizo correctamente.", "Transacción Exitosa", JOptionPane.INFORMATION_MESSAGE);
-    }//GEN-LAST:event_Aceptar1ActionPerformed
+    }//GEN-LAST:event_VerificarActionPerformed
 
-    private void CampoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CampoMouseClicked
+    private void CampoFolioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CampoFolioMouseClicked
         // TODO add your handling code here:
-        Campo.setText("");
-    }//GEN-LAST:event_CampoMouseClicked
+        CampoFolio.setText("");
+    }//GEN-LAST:event_CampoFolioMouseClicked
 
     /**
      * @param args the command line arguments
@@ -280,17 +289,17 @@ public class ValidarLicencia extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Aceptar;
-    private javax.swing.JButton Aceptar1;
-    private javax.swing.JTextField Campo;
     private javax.swing.JTextField CampoCurp3;
-    private javax.swing.JButton Cancelar;
+    private javax.swing.JTextField CampoFolio;
+    private javax.swing.JPanel CampoGris;
+    private javax.swing.JLabel DatosValidar;
     private javax.swing.JPanel FondoGris4;
     private javax.swing.JLabel FotoGobSonora;
-    private javax.swing.JLabel Opcional;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel LigenciaVigente;
+    private javax.swing.JButton Verificar;
+    private javax.swing.JButton btnAceptar;
+    private javax.swing.JButton btnCancelar;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel3;
     // End of variables declaration//GEN-END:variables
 }

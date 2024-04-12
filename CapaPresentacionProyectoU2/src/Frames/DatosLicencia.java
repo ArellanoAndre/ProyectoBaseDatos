@@ -5,34 +5,27 @@
 package Frames;
 
 import Tools.Imagen;
-import dto.ClientesDTO;
-import excepciones.NegocioException;
-import interfaces.IBuscarClienteBO;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-
+import dto.ClientesDTO;
+import negocio.BuscarClienteBO;
 /**
  *
  * @author Arell
  */
 public class DatosLicencia extends javax.swing.JFrame {
-
-    private IBuscarClienteBO buscarCliente;
-    private ClientesDTO cliente;
-    
+  private BuscarClienteBO ClienteBO;
+  private ClientesDTO cliente;
 
     /**
      * Creates new form IdentificacionLicencia
      */
-    public DatosLicencia(IBuscarClienteBO buscarCliente) {
-        this.buscarCliente=buscarCliente;
-        initComponents();
+    public DatosLicencia() {
+           initComponents();
         //Configurar Tamaño JFrame
         setTitle("ventana de Datos Licencia  ");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        // Configurar la Foto
+         // Configurar la Foto
         Imagen imagen = new Imagen();
         imagen.PintarImagen(FotoGobSonora, "src\\Pantallas\\GobSonora.jpg");
 
@@ -52,13 +45,13 @@ public class DatosLicencia extends javax.swing.JFrame {
         FotoGobSonora = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         Cancelar = new javax.swing.JButton();
-        CampoCurp1 = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
+        CampoRFC = new javax.swing.JTextField();
+        RFC = new javax.swing.JLabel();
         Aceptar = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox<>();
-        jLabel4 = new javax.swing.JLabel();
+        Transporte = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        Aceptar1 = new javax.swing.JButton();
+        Verificar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -108,9 +101,15 @@ public class DatosLicencia extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setBackground(new java.awt.Color(204, 204, 204));
-        jLabel3.setFont(new java.awt.Font("Roboto", 2, 24)); // NOI18N
-        jLabel3.setText("RFC:");
+        CampoRFC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CampoRFCActionPerformed(evt);
+            }
+        });
+
+        RFC.setBackground(new java.awt.Color(204, 204, 204));
+        RFC.setFont(new java.awt.Font("Roboto", 2, 24)); // NOI18N
+        RFC.setText("RFC:");
 
         Aceptar.setBackground(new java.awt.Color(0, 255, 51));
         Aceptar.setFont(new java.awt.Font("Roboto Black", 3, 12)); // NOI18N
@@ -128,9 +127,9 @@ public class DatosLicencia extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setBackground(new java.awt.Color(204, 204, 204));
-        jLabel4.setFont(new java.awt.Font("Roboto", 3, 14)); // NOI18N
-        jLabel4.setText("Transporte");
+        Transporte.setBackground(new java.awt.Color(204, 204, 204));
+        Transporte.setFont(new java.awt.Font("Roboto", 3, 14)); // NOI18N
+        Transporte.setText("Transporte");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -143,12 +142,12 @@ public class DatosLicencia extends javax.swing.JFrame {
             .addGap(0, 34, Short.MAX_VALUE)
         );
 
-        Aceptar1.setBackground(new java.awt.Color(0, 102, 102));
-        Aceptar1.setFont(new java.awt.Font("Roboto Black", 3, 12)); // NOI18N
-        Aceptar1.setText("Verificar");
-        Aceptar1.addActionListener(new java.awt.event.ActionListener() {
+        Verificar.setBackground(new java.awt.Color(0, 102, 102));
+        Verificar.setFont(new java.awt.Font("Roboto Black", 3, 12)); // NOI18N
+        Verificar.setText("Verificar");
+        Verificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Aceptar1ActionPerformed(evt);
+                VerificarActionPerformed(evt);
             }
         });
 
@@ -166,15 +165,15 @@ public class DatosLicencia extends javax.swing.JFrame {
             .addGroup(FondoBlancoLayout.createSequentialGroup()
                 .addGap(147, 147, 147)
                 .addGroup(FondoBlancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
+                    .addComponent(RFC)
                     .addGroup(FondoBlancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, FondoBlancoLayout.createSequentialGroup()
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Transporte, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Aceptar1))
-                        .addComponent(CampoCurp1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(Verificar))
+                        .addComponent(CampoRFC, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(173, Short.MAX_VALUE))
         );
@@ -185,14 +184,14 @@ public class DatosLicencia extends javax.swing.JFrame {
                 .addGap(63, 63, 63)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(RFC, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(CampoCurp1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(CampoRFC, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(FondoBlancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Transporte, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Aceptar1))
+                    .addComponent(Verificar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
                 .addGroup(FondoBlancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -220,30 +219,49 @@ public class DatosLicencia extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_CancelarActionPerformed
 
+    private void CampoRFCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoRFCActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_CampoRFCActionPerformed
+
     private void AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarActionPerformed
-        String rfc = CampoCurp1.getText();
-        try {
-            if (buscarCliente.BuscarPorRFC(rfc) != null) {
-                cliente.setRfc(rfc);
-                
-            }
-
-        } catch (NegocioException ex) {
-            JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage(), "Error de Verificacion", JOptionPane.ERROR_MESSAGE);
+        String rfc = CampoRFC.getText();
+        if (rfc.isEmpty()) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Todos los campos son obligatorios", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
         }
-
-        CostosLicenciaAuto licencia = new CostosLicenciaAuto();
+        try {
+            ClientesDTO dto = ClienteBO.BuscarPorRFC(rfc);
+            if (!dto.getRfc().isEmpty()){
+        CostosLicenciaAuto licencia = new CostosLicenciaAuto(dto);
         licencia.setVisible(true);
+            }
+            else
+                  javax.swing.JOptionPane.showMessageDialog(this, "No se Encontro el RFC en la base de datos", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+        } catch (Exception e) {
+        }
+        
     }//GEN-LAST:event_AceptarActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
-    private void Aceptar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Aceptar1ActionPerformed
+    private void VerificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VerificarActionPerformed
         // TODO add your handling code here:
+        String rfc = CampoRFC.getText();
+        if (rfc.isEmpty()) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Todos los campos son obligatorios", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+        }
+        try {
+            ClientesDTO dto = ClienteBO.BuscarPorRFC(rfc);
+            if (!dto.getRfc().isEmpty()){
+        
+            }
         JOptionPane.showMessageDialog(this, "La Inspeccion se realizo correctamente.", "Transacción Exitosa", JOptionPane.INFORMATION_MESSAGE);
-    }//GEN-LAST:event_Aceptar1ActionPerformed
+        } catch (Exception e) {
+        }
+       
+    }//GEN-LAST:event_VerificarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -283,15 +301,15 @@ public class DatosLicencia extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Aceptar;
-    private javax.swing.JButton Aceptar1;
-    private javax.swing.JTextField CampoCurp1;
+    private javax.swing.JTextField CampoRFC;
     private javax.swing.JButton Cancelar;
     private javax.swing.JPanel FondoBlanco;
     private javax.swing.JPanel FondoGris4;
     private javax.swing.JLabel FotoGobSonora;
+    private javax.swing.JLabel RFC;
+    private javax.swing.JLabel Transporte;
+    private javax.swing.JButton Verificar;
     private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

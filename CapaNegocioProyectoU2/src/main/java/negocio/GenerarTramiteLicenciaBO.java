@@ -8,6 +8,7 @@ import DAO.Interface.ITramiteLicencia;
 import Excepciones.PersistenciaException;
 import JPA.Enum.EstadosJPA;
 import JPA.TramiteEntidad;
+import dto.LicenciasDTO;
 import excepciones.NegocioException;
 import interfaces.IGenerarTramiteLicenciaBO;
 import java.util.logging.Level;
@@ -26,18 +27,25 @@ public class GenerarTramiteLicenciaBO implements IGenerarTramiteLicenciaBO {
     }
 
     @Override
-    public void CalcularCosto() throws NegocioException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public double CalcularCosto(String Vigencia, boolean isDiscapacitado) throws NegocioException {
+        double costo;
+        try {
+            costo = tramiteLicencia.CalcularCosto(Vigencia, isDiscapacitado);
+            return costo;
+        } catch (PersistenciaException ex) {
+            throw new NegocioException("no se pudo calcular el precio");
+        }
     }
 
     @Override
-    public TramiteEntidad Validar(String identificador) throws NegocioException {
+    public LicenciasDTO Validar(String identificador) throws NegocioException {
         try {
             TramiteEntidad tramite = tramiteLicencia.Validar(identificador);
             if (tramite == null) {
                 throw new NegocioException("no se encontro el numero");
             }
-            return tramite;
+            LicenciasDTO dto = new LicenciasDTO(identificador);
+            return dto;
         } catch (Exception e) {
 
             throw new NegocioException("Error al iniciar sesión", e);

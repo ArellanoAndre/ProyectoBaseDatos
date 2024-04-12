@@ -15,7 +15,7 @@ import excepciones.NegocioException;
  */
 public interface IGenerarTramitePlacasBO {
 
-    public void CalcularCosto() throws NegocioException;
+    public double CalcularCosto(EstadosJPA estado) throws NegocioException;
 
     public TramiteEntidad Validar(String identificador) throws NegocioException;
 

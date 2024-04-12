@@ -4,17 +4,17 @@
  */
 package Frames;
 
-import Frames.HistorialPanel;
 import Tools.Imagen;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import negocio.AgregarPersonaBO;
 
 /**
  *
  * @author Arell
  */
 public class InicioMenuPanel extends javax.swing.JFrame {
-
+private AgregarPersonaBO agregarpersona;
     /**
      * Creates new form InicioMenuPanel
      */
@@ -218,7 +218,13 @@ public class InicioMenuPanel extends javax.swing.JFrame {
     }//GEN-LAST:event_ReportesMouseClicked
 
     private void FotoSitioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FotoSitioMouseClicked
+        try {
+            agregarpersona.PoblarPersonas();
+
+        } catch (Exception e) {
+        }
         JOptionPane.showMessageDialog(this, "La Insercion de Datos se realizo correctamente.", "Transacción Exitosa", JOptionPane.INFORMATION_MESSAGE);
+
 
     }//GEN-LAST:event_FotoSitioMouseClicked
 

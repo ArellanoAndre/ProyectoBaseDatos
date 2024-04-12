@@ -28,9 +28,15 @@ public class GenerarTramitePlacasBO implements IGenerarTramitePlacasBO {
 
     
     @Override
-    public void CalcularCosto() throws NegocioException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+   public double CalcularCosto(EstadosJPA estado) throws NegocioException {
+       double costo;
+       try {
+            costo=this.tramitePlaca.CalcularCosto(estado);
+            return costo;
+        } catch (PersistenciaException ex) {
+            throw new NegocioException("Error al obtener el precio");
+        }
+   }
 
     @Override
     public TramiteEntidad Validar(String identificador) throws NegocioException {

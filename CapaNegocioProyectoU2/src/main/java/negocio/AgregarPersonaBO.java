@@ -36,4 +36,14 @@ public class AgregarPersonaBO implements IAgregarPersonaBO {
         }
     }
 
+    @Override
+    public void PoblarPersonas() throws NegocioException {
+        try {
+           clienteDAO.poblarClientes();
+           
+        } catch (PersistenciaException ex) {
+            throw new NegocioException("No se pudo poblar a las personas");
+        }    
+    }
+
 }

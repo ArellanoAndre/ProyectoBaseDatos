@@ -5,13 +5,32 @@
 
 package com.mycompany.capapersistenciaproyectobdd2;
 
+import DAO.ClienteDAO;
+import DAO.Conexion;
+import DAO.Interface.IConexion;
+import JPA.ClienteEntidad;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
 /**
  *
  * @author Usuario
  */
 public class CapaPersistenciaProyectoBDD2 {
+ //Atributo de clase Tipo Iconexion 
+      private IConexion conexion = new Conexion();
+     EntityManager entityManager = conexion.EstablecerConexion();
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+
+try {
+    ClienteDAO dao = new ClienteDAO();
+    dao.poblarClientes();
+
+        } catch (Exception e) {
+        }
     }
-}
+        
+    }
+

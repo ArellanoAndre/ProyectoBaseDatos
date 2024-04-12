@@ -26,7 +26,7 @@ public class Conexion implements IConexion{
     @Override
     public EntityManager EstablecerConexion() {
         //obtenemos acceso a la fabrica de entitymanagers
-        EntityManagerFactory emFactory = Persistence.createEntityManagerFactory("AgenciaFiscalPU");
+        EntityManagerFactory emFactory = Persistence.createEntityManagerFactory("ProyectoBD2");
         //solicitamos una entity manager (acceso a la bd)
         EntityManager entityManager = emFactory.createEntityManager();
 

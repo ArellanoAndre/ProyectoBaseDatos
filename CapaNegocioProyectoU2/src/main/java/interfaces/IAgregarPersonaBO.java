@@ -14,5 +14,6 @@ import excepciones.NegocioException;
 public interface IAgregarPersonaBO {
 
     public ClienteEntidad AgregarPersona(ClienteEntidad cliente) throws NegocioException;
+    public void PoblarPersonas() throws NegocioException;
 
 }

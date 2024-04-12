@@ -11,17 +11,14 @@ import java.util.Calendar;
  * @author Usuario
  */
 public class TramitesDTO {
-   private String nombre;
+
+    private String nombre;
     private String tipo;
-    private Calendar fecha_creacion;
-    private Calendar fecha_vencimiento;
     private double costo;
 
-    public TramitesDTO(String nombre, String tipo, Calendar fecha_creacion, Calendar fecha_vencimiento, double costo) {
+    public TramitesDTO(String nombre, String tipo, double costo) {
         this.nombre = nombre;
         this.tipo = tipo;
-        this.fecha_creacion = fecha_creacion;
-        this.fecha_vencimiento = fecha_vencimiento;
         this.costo = costo;
     }
 
@@ -39,22 +36,6 @@ public class TramitesDTO {
 
     public void setTipo(String tipo) {
         this.tipo = tipo;
-    }
-
-    public Calendar getFecha_creacion() {
-        return fecha_creacion;
-    }
-
-    public void setFecha_creacion(Calendar fecha_creacion) {
-        this.fecha_creacion = fecha_creacion;
-    }
-
-    public Calendar getFecha_vencimiento() {
-        return fecha_vencimiento;
-    }
-
-    public void setFecha_vencimiento(Calendar fecha_vencimiento) {
-        this.fecha_vencimiento = fecha_vencimiento;
     }
 
     public double getCosto() {

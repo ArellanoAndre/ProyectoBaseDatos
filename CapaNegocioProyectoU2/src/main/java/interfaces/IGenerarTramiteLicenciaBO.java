@@ -5,7 +5,7 @@
 package interfaces;
 
 import JPA.Enum.EstadosJPA;
-import JPA.TramiteEntidad;
+import dto.LicenciasDTO;
 import excepciones.NegocioException;
 
 /**
@@ -14,9 +14,9 @@ import excepciones.NegocioException;
  */
 public interface IGenerarTramiteLicenciaBO {
 
-    public void CalcularCosto() throws NegocioException;
+     public double CalcularCosto(String Vigencia, boolean isDiscapacitado) throws NegocioException;
 
-    public TramiteEntidad Validar(String identificador) throws NegocioException;
+    public LicenciasDTO Validar(String identificador) throws NegocioException;
 
     public void CambiarEstado(Long Id, EstadosJPA nuevoEstado) throws NegocioException;
 

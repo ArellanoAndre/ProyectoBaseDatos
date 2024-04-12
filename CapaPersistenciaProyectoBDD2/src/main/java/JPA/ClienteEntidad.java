@@ -1,7 +1,6 @@
 package JPA;
 
 import java.io.Serializable;
-import java.util.Calendar;
 import java.util.List;
 import java.util.Objects;
 import javax.persistence.CascadeType;
@@ -11,14 +10,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.PrePersist;
-import javax.persistence.PreUpdate;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "clientes_persona")
+@Table(name = "Clientes")
 public class ClienteEntidad implements Serializable {
 
     @Id
@@ -44,17 +39,8 @@ public class ClienteEntidad implements Serializable {
     @Column(name = "discapacidad", nullable = false)
     private boolean isDiscapacitado;
 
-    @Column(name = "fecha_nacimiento")
-    @Temporal(TemporalType.DATE)
-    private Calendar fechaNacimiento;
-
-    @Column(name = "fecha_creacion")
-    @Temporal(TemporalType.DATE)
-    private Calendar fechaCreacion;
-
-    @Column(name = "fecha_actualizacion")
-    @Temporal(TemporalType.DATE)
-    private Calendar fechaActualizacion;
+    @Column(name = "año_nacimiento")
+    private int fechaNacimiento;
 
     @OneToMany(mappedBy = "cliente", cascade = {CascadeType.PERSIST})
     private List<TramiteEntidad> tramites;
@@ -65,38 +51,15 @@ public class ClienteEntidad implements Serializable {
     public ClienteEntidad() {
     }
 
-    public ClienteEntidad(String nombres, String apellidoPaterno, String apellidoMaterno, String rfc, String telefono, boolean isDiscapacitado, Calendar fechaNacimiento, List<TramiteEntidad> tramites, List<VehiculoEntidad> vehiculos) {
+    public ClienteEntidad(String nombres, String apellidoPaterno, String apellidoMaterno, String rfc, boolean isDiscapacitado, int fechaNacimiento) {
         this.nombres = nombres;
         this.apellidoPaterno = apellidoPaterno;
         this.apellidoMaterno = apellidoMaterno;
         this.rfc = rfc;
-        this.telefono = telefono;
         this.isDiscapacitado = isDiscapacitado;
         this.fechaNacimiento = fechaNacimiento;
-        this.tramites = tramites;
-        this.vehiculos = vehiculos;
     }
-
-    public ClienteEntidad(String nombres, String apellidoPaterno, String apellidoMaterno, String rfc, String telefono, boolean isDiscapacitado, Calendar fechaNacimiento) {
-        this.nombres = nombres;
-        this.apellidoPaterno = apellidoPaterno;
-        this.apellidoMaterno = apellidoMaterno;
-        this.rfc = rfc;
-        this.telefono = telefono;
-        this.isDiscapacitado=isDiscapacitado;
-        this.fechaNacimiento = fechaNacimiento;
-    }
-
-    @PrePersist
-    public void prePersist() {
-        this.fechaCreacion = Calendar.getInstance();
-        this.fechaActualizacion = Calendar.getInstance();
-    }
-
-    @PreUpdate
-    public void preUpdate() {
-        this.fechaActualizacion = Calendar.getInstance();
-    }
+    
 
     public Long getId() {
         return id;
@@ -154,29 +117,14 @@ public class ClienteEntidad implements Serializable {
         this.isDiscapacitado = isDiscapacitado;
     }
 
-    public Calendar getFechaNacimiento() {
+    public int getFechaNacimiento() {
         return fechaNacimiento;
     }
 
-    public void setFechaNacimiento(Calendar fechaNacimiento) {
+    public void setFechaNacimiento(int fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 
-    public Calendar getFechaCreacion() {
-        return fechaCreacion;
-    }
-
-    public void setFechaCreacion(Calendar fechaCreacion) {
-        this.fechaCreacion = fechaCreacion;
-    }
-
-    public Calendar getFechaActualizacion() {
-        return fechaActualizacion;
-    }
-
-    public void setFechaActualizacion(Calendar fechaActualizacion) {
-        this.fechaActualizacion = fechaActualizacion;
-    }
 
     public List<TramiteEntidad> getTramites() {
         return tramites;

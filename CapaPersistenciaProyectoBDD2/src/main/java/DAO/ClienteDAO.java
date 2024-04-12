@@ -13,7 +13,11 @@ import javax.persistence.TypedQuery;
 import DAO.Interface.ICliente;
 import Excepciones.PersistenciaException;
 import JPA.TramiteEntidad;
+import java.util.ArrayList;
 import java.util.Calendar;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.NoResultException;
+import javax.persistence.Persistence;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -23,8 +27,9 @@ import javax.swing.table.DefaultTableModel;
 public class ClienteDAO implements ICliente {
     //Atributo de clase Tipo Iconexion 
 
-    private IConexion conexion;
+    private IConexion conexion = new Conexion();
     EntityManager entityManager = conexion.EstablecerConexion();
+    
 
     @Override
     public ClienteEntidad BuscarPorRFC(String rfc) throws PersistenciaException {
@@ -38,6 +43,21 @@ public class ClienteDAO implements ICliente {
             cliente = null;
         }
         return cliente;
+    }    
+
+    public Boolean isDiscapacitado(String rfc) throws PersistenciaException {
+        try {
+            Query query = entityManager.createQuery("SELECT c.discapacidad FROM Clientes c WHERE c.rfc = :rfc", Boolean.class);
+            query.setParameter("rfc", rfc);
+            Boolean isDiscapacitado = (Boolean) query.getSingleResult();
+            return isDiscapacitado;
+        } catch (NoResultException e) {
+            // Maneja el caso en el que no se encuentra ningún resultado
+            return null;
+        } catch (Exception e) {
+            // Maneja cualquier otra excepción
+            throw new PersistenciaException("Error al verificar si el cliente es discapacitado");
+        }
     }
 
     @Override
@@ -111,30 +131,53 @@ public class ClienteDAO implements ICliente {
         entityManager.close();
         return cliente;
     }
-
+    
+    @Override
     public void poblarClientes() throws PersistenciaException {
         if (this.BuscarTodos().isEmpty()) {
-            this.AgregarPersona(new ClienteEntidad("Juan", "Pérez", "Gómez", "GHI123456KL21", "5551234567", false, this.crearFecha(2000, 12, 11)));
-            this.AgregarPersona(new ClienteEntidad("María", "López", "Martínez", "ABC987654ZYX32", "5559876543", true, this.crearFecha(2002, 5, 20)));
-            this.AgregarPersona(new ClienteEntidad("Carlos", "González", "Hernández", "DEF654321MN98", "5558765432", false, this.crearFecha(1998, 8, 15)));
-            this.AgregarPersona(new ClienteEntidad("Ana", "Martínez", "Rodríguez", "JKL456789PO54", "5557654321", true, this.crearFecha(1995, 4, 3)));
-            this.AgregarPersona(new ClienteEntidad("Pedro", "Sánchez", "García", "MNO987654QP32", "5556543210", false, this.crearFecha(2003, 10, 25)));
-            this.AgregarPersona(new ClienteEntidad("Laura", "Ramírez", "Díaz", "RST321098ML76", "5555432109", true, this.crearFecha(1990, 7, 18)));
-            this.AgregarPersona(new ClienteEntidad("Sofía", "Hernández", "Gutiérrez", "UVW789012AB43", "5554321098", false, this.crearFecha(1999, 9, 7)));
-            this.AgregarPersona(new ClienteEntidad("Javier", "Torres", "Núñez", "YZA210987CD65", "5553210987", true, this.crearFecha(2001, 3, 30)));
-            this.AgregarPersona(new ClienteEntidad("Elena", "Díaz", "Sánchez", "PQR543210JK87", "5552109876", false, this.crearFecha(1997, 6, 12)));
-            this.AgregarPersona(new ClienteEntidad("Diego", "García", "Martínez", "CDE876543XY21", "5551098765", true, this.crearFecha(1994, 2, 27)));
-            this.AgregarPersona(new ClienteEntidad("Paula", "Pérez", "López", "FGH234567IJ98", "5550987654", false, this.crearFecha(2004, 11, 8)));
-            this.AgregarPersona(new ClienteEntidad("Luis", "Martínez", "Gómez", "XYZ432109OP87", "5559876543", true, this.crearFecha(1993, 1, 1)));
-            this.AgregarPersona(new ClienteEntidad("Adriana", "Gómez", "Rodríguez", "HIJ765432KL09", "5558765432", false, this.crearFecha(2005, 6, 9)));
-            this.AgregarPersona(new ClienteEntidad("Miguel", "Hernández", "Sánchez", "NOP987654QR32", "5557654321", true, this.crearFecha(1996, 9, 14)));
-            this.AgregarPersona(new ClienteEntidad("Fernanda", "Sánchez", "Martínez", "STU654321VW87", "5556543210", false, this.crearFecha(2000, 4, 23)));
-            this.AgregarPersona(new ClienteEntidad("Roberto", "Díaz", "Pérez", "ABC123456ZY98", "5555432109", true, this.crearFecha(1991, 8, 5)));
-            this.AgregarPersona(new ClienteEntidad("Lucía", "Martínez", "González", "GHI987654JK32", "5554321098", false, this.crearFecha(1998, 3, 17)));
-            this.AgregarPersona(new ClienteEntidad("Ricardo", "González", "Hernández", "UVW234567AB43", "5553210987", true, this.crearFecha(2002, 7, 19)));
-            this.AgregarPersona(new ClienteEntidad("Carmen", "Hernández", "López", "XYZ789012CD65", "5552109876", false, this.crearFecha(1992, 10, 2)));
-            this.AgregarPersona(new ClienteEntidad("Gabriel", "López", "Sánchez", "PQR456789IJ09", "5551098765", true, this.crearFecha(1999, 12, 28)));
+  EntityManagerFactory managerFactory = Persistence.createEntityManagerFactory("ProyectoBD2");
+EntityManager entityManager = managerFactory.createEntityManager();
+entityManager.getTransaction().begin();
+
+try {
+    List<ClienteEntidad> clientes = new ArrayList<>();
+    clientes.add(new ClienteEntidad("Juan", "Pérez", "Gómez", "GHI", false, 2000));
+    clientes.add(new ClienteEntidad("María", "López", "Martínez", "ABC", true, 2002));
+    clientes.add(new ClienteEntidad("Carlos", "González", "Hernández", "DEF", false, 1998));
+    clientes.add(new ClienteEntidad("Ana", "Martínez", "Rodríguez", "JKL", true, 1995));
+    clientes.add(new ClienteEntidad("Pedro", "Sánchez", "García", "MNO", false, 2003));
+    clientes.add(new ClienteEntidad("Laura", "Ramírez", "Díaz", "RST", true, 1990));
+    clientes.add(new ClienteEntidad("Sofía", "Hernández", "Gutiérrez", "UVW", false, 1999));
+    clientes.add(new ClienteEntidad("Javier", "Torres", "Núñez", "YZA", true, 2001));
+    clientes.add(new ClienteEntidad("Elena", "Díaz", "Sánchez", "PQR", false, 1997));
+    clientes.add(new ClienteEntidad("Diego", "García", "Martínez", "CDE", true, 1994));
+    clientes.add(new ClienteEntidad("Paula", "Pérez", "López", "FGH", false, 2004));
+    clientes.add(new ClienteEntidad("Luis", "Martínez", "Gómez", "XYZ", true, 1993));
+    clientes.add(new ClienteEntidad("Adriana", "Gómez", "Rodríguez", "HIJ", false, 2005));
+    clientes.add(new ClienteEntidad("Miguel", "Hernández", "Sánchez", "NOP", true, 1996));
+    clientes.add(new ClienteEntidad("Fernanda", "Sánchez", "Martínez", "STU", false, 2000));
+    clientes.add(new ClienteEntidad("Roberto", "Díaz", "Pérez", "ABC", true, 1991));
+    clientes.add(new ClienteEntidad("Lucía", "Martínez", "González", "GHI", false, 1998));
+    clientes.add(new ClienteEntidad("Ricardo", "González", "Hernández", "UVW", true, 2002));
+    clientes.add(new ClienteEntidad("Carmen", "Hernández", "López", "XYZ", false, 1992));
+    clientes.add(new ClienteEntidad("Gabriel", "López", "Sánchez", "PQR", true, 1999));
+    
+    for (ClienteEntidad cliente : clientes) {
+        entityManager.persist(cliente); // Insertar el objeto ClienteEntidad en la base de datos
+    }
+
+    entityManager.getTransaction().commit();
+    System.out.println("Se insertaron correctamente los registros.");
+} catch (Exception e) {
+    entityManager.getTransaction().rollback();
+    System.out.println("Error al insertar los registros: " + e.getMessage());
+} finally {
+    entityManager.close();
+    managerFactory.close();
+}
+
         }
+        
     }
 
     @Override

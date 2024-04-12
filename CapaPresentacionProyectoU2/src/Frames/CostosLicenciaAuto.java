@@ -5,21 +5,22 @@
 package Frames;
 
 import Tools.Imagen;
+import dto.ClientesDTO;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import negocio.GenerarTramiteLicenciaBO;
 
 /**
  *
  * @author Arell
  */
 public class CostosLicenciaAuto extends javax.swing.JFrame {
-
-    String[] opciones = {"1 año", "2 años", "3 años"};
-
+private GenerarTramiteLicenciaBO generar;
+  private ClientesDTO cliente;
     /**
      * Creates new form LicenciaPanel
      */
-    public CostosLicenciaAuto() {
+    public CostosLicenciaAuto(ClientesDTO cliente) {
         initComponents();
         //Configurar Tamaño JFrame
         setTitle("Ventana de Costos Licencas");
@@ -28,6 +29,8 @@ public class CostosLicenciaAuto extends javax.swing.JFrame {
         Imagen imagen = new Imagen();
         imagen.PintarImagen(FotoGobSonora, "src\\Pantallas\\GobSonora.jpg");
         imagen.PintarImagen(TablaCostos, "src\\Pantallas\\CostoLicencia.jpg");
+        //inicializacion
+        this.cliente = cliente;
     }
 
     /**
@@ -49,7 +52,7 @@ public class CostosLicenciaAuto extends javax.swing.JFrame {
         TablaCostos = new javax.swing.JLabel();
         Aceptar1 = new javax.swing.JButton();
         Cancelar1 = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        ComboBoxAños = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
 
         jCheckBox1.setText("jCheckBox1");
@@ -126,10 +129,10 @@ public class CostosLicenciaAuto extends javax.swing.JFrame {
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        ComboBoxAños.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "" }));
+        ComboBoxAños.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                ComboBoxAñosActionPerformed(evt);
             }
         });
 
@@ -151,7 +154,7 @@ public class CostosLicenciaAuto extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FondoBlancoLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(FondoBlancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ComboBoxAños, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(TablaCostos, javax.swing.GroupLayout.PREFERRED_SIZE, 449, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -170,7 +173,7 @@ public class CostosLicenciaAuto extends javax.swing.JFrame {
                         .addGap(101, 101, 101)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(ComboBoxAños, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(FondoBlancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Cancelar1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -194,14 +197,18 @@ public class CostosLicenciaAuto extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarActionPerformed
-        //  CostosLicenciaAuto licencia = new CostosLicenciaAuto();
+      //  CostosLicenciaAuto licencia = new CostosLicenciaAuto();
         //licencia.setVisible(true);
     }//GEN-LAST:event_AceptarActionPerformed
 
     private void Aceptar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Aceptar1ActionPerformed
+         String años = (String)ComboBoxAños.getSelectedItem();
+         try {
+            generar.CalcularCosto(años,cliente.getDiscapacitado());
+        } catch (Exception e) {
+        }
         InicioMenuPanel inicio = new InicioMenuPanel();
-        inicio.setVisible(true);
-        this.dispose();
+        inicio.setVisible(true);this.dispose();
         JOptionPane.showMessageDialog(this, "El Tramite se realizo correctamente.", "Transacción Exitosa", JOptionPane.INFORMATION_MESSAGE);
 
     }//GEN-LAST:event_Aceptar1ActionPerformed
@@ -211,9 +218,9 @@ public class CostosLicenciaAuto extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_Cancelar1ActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void ComboBoxAñosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxAñosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_ComboBoxAñosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -248,7 +255,7 @@ public class CostosLicenciaAuto extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CostosLicenciaAuto().setVisible(true);
+                //new CostosLicenciaAuto().setVisible(true);
             }
         });
     }
@@ -257,13 +264,13 @@ public class CostosLicenciaAuto extends javax.swing.JFrame {
     private javax.swing.JButton Aceptar;
     private javax.swing.JButton Aceptar1;
     private javax.swing.JButton Cancelar1;
+    private javax.swing.JComboBox<String> ComboBoxAños;
     private javax.swing.JPanel FondoBlanco;
     private javax.swing.JPanel FondoGris4;
     private javax.swing.JLabel FotoGobSonora;
     private javax.swing.JLabel TablaCostos;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     // End of variables declaration//GEN-END:variables

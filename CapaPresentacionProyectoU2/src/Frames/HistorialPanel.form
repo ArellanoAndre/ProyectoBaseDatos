@@ -76,16 +76,16 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
                           <Component id="Curp3" min="-2" pref="48" max="-2" attributes="0"/>
-                          <Component id="Curp1" min="-2" pref="85" max="-2" attributes="0"/>
-                          <Component id="CampoFolio" alignment="0" max="32767" attributes="0"/>
-                          <Component id="CampoFolio2" alignment="0" max="32767" attributes="0"/>
+                          <Component id="RFC" min="-2" pref="85" max="-2" attributes="0"/>
+                          <Component id="CampoRFC" alignment="0" max="32767" attributes="0"/>
+                          <Component id="CampoNombre" alignment="0" max="32767" attributes="0"/>
                           <Component id="Curp4" alignment="0" min="-2" pref="85" max="-2" attributes="0"/>
-                          <Component id="CampoFolio3" alignment="0" min="-2" pref="129" max="-2" attributes="0"/>
+                          <Component id="CampApellido" alignment="0" min="-2" pref="129" max="-2" attributes="0"/>
                       </Group>
                       <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                       <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="Curp2" alignment="0" max="32767" attributes="0"/>
-                          <Component id="CampoFolio1" alignment="0" min="-2" pref="129" max="-2" attributes="0"/>
+                          <Component id="Año" alignment="0" max="32767" attributes="0"/>
+                          <Component id="CampoAño" alignment="0" min="-2" pref="129" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace pref="70" max="32767" attributes="0"/>
@@ -115,17 +115,17 @@
                           <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                           <Component id="Curp3" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="CampoFolio" min="-2" max="-2" attributes="0"/>
+                          <Component id="CampoRFC" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="Curp1" min="-2" pref="26" max="-2" attributes="0"/>
+                          <Component id="RFC" min="-2" pref="26" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="CampoFolio2" min="-2" max="-2" attributes="0"/>
+                          <Component id="CampoNombre" min="-2" max="-2" attributes="0"/>
                           <EmptySpace pref="22" max="32767" attributes="0"/>
                           <Component id="Curp4" min="-2" pref="26" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="CampoFolio3" min="-2" max="-2" attributes="0"/>
+                          <Component id="CampApellido" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="Curp2" min="-2" max="-2" attributes="0"/>
+                          <Component id="Año" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -135,7 +135,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="CampoFolio1" min="-2" max="-2" attributes="0"/>
+                          <Component id="CampoAño" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
@@ -205,7 +205,7 @@
             <Property name="text" type="java.lang.String" value="Filtros de Consulta"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="Curp1">
+        <Component class="javax.swing.JLabel" name="RFC">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="99" green="99" red="99" type="rgb"/>
@@ -221,7 +221,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="Curp2">
+        <Component class="javax.swing.JLabel" name="A&#xf1;o">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="99" green="99" red="99" type="rgb"/>
@@ -253,11 +253,14 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="CampoFolio">
+        <Component class="javax.swing.JTextField" name="CampoRFC">
         </Component>
-        <Component class="javax.swing.JTextField" name="CampoFolio1">
+        <Component class="javax.swing.JTextField" name="CampoA&#xf1;o">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CampoA&#xf1;oActionPerformed"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="CampoFolio2">
+        <Component class="javax.swing.JTextField" name="CampoNombre">
         </Component>
         <Component class="javax.swing.JButton" name="Aceptar5">
           <Properties>
@@ -287,7 +290,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CancelarActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="CampoFolio3">
+        <Component class="javax.swing.JTextField" name="CampApellido">
         </Component>
         <Component class="javax.swing.JLabel" name="Curp4">
           <Properties>

@@ -7,12 +7,11 @@ package negocio;
 import DAO.Interface.ICliente;
 import Excepciones.PersistenciaException;
 import JPA.ClienteEntidad;
+import dto.ClientesDTO;
 import excepciones.NegocioException;
 import interfaces.IBuscarClienteBO;
 import java.util.Calendar;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -41,7 +40,7 @@ public class BuscarClienteBO implements IBuscarClienteBO {
     }
 
     @Override
-    public ClienteEntidad BuscarPorRFC(String rfc) throws NegocioException {
+    public ClientesDTO BuscarPorRFC(String rfc) throws NegocioException {
         if (rfc == null || rfc.trim().isBlank()) {
             throw new NegocioException("La busqueda debe contener informacion sobre el rfc");
 
@@ -49,7 +48,8 @@ public class BuscarClienteBO implements IBuscarClienteBO {
         ClienteEntidad cliente;
         try {
             cliente = clienteDAO.BuscarPorRFC(rfc);
-            return cliente;
+            ClientesDTO dto = new ClientesDTO(cliente.getRfc(),cliente.isIsDiscapacitado());
+            return dto;
         } catch (PersistenciaException ex) {
             throw new NegocioException("No se pudo buscar por RFC");
         }
@@ -100,7 +100,7 @@ public class BuscarClienteBO implements IBuscarClienteBO {
         } catch (PersistenciaException ex) {
             throw new NegocioException("No se pudo buscar por apellido");
         }
-        
+
     }
 
     private void VerificarFechaAñoMenorHoy(int año) throws NegocioException {
@@ -124,5 +124,18 @@ public class BuscarClienteBO implements IBuscarClienteBO {
             throw new NegocioException("El cliente debe ser mayor de edad");
 
         }
+    }
+
+    @Override
+    public Boolean isDiscapacitado(String rfc) throws NegocioException {
+        boolean discapacitado;
+        try {
+            discapacitado = clienteDAO.isDiscapacitado(rfc);
+            return discapacitado;
+        } catch (PersistenciaException ex) {
+            throw new NegocioException("No se pudo encontrar el estado del cliente");
+
+        }
+
     }
 }

@@ -6,13 +6,16 @@ package Frames;
 
 import Tools.Imagen;
 import javax.swing.JFrame;
+import negocio.GenerarTramitePlacasBO;
+import dto.PlacasDTO;
 
 /**
  *
  * @author Arell
  */
 public class PlacasNuevoPanel extends javax.swing.JFrame {
-
+ private GenerarTramitePlacasBO licenciaBo;
+        private PlacasDTO placa;
     /**
      * Creates new form PlacasNuevoPanel
      */
@@ -45,18 +48,18 @@ public class PlacasNuevoPanel extends javax.swing.JFrame {
         FondoGris4 = new javax.swing.JPanel();
         FotoGobSonora = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        Curp = new javax.swing.JLabel();
-        CampoCurp = new javax.swing.JTextField();
+        Linea = new javax.swing.JLabel();
+        CampoNoSerie = new javax.swing.JTextField();
         Aceptar = new javax.swing.JButton();
-        Curp2 = new javax.swing.JLabel();
-        Curp3 = new javax.swing.JLabel();
-        CampoCurp2 = new javax.swing.JTextField();
-        CampoCurp4 = new javax.swing.JTextField();
-        Cancelar2 = new javax.swing.JButton();
-        Curp5 = new javax.swing.JLabel();
-        CampoCurp6 = new javax.swing.JTextField();
-        Curp6 = new javax.swing.JLabel();
-        CampoCurp7 = new javax.swing.JTextField();
+        NoSerie = new javax.swing.JLabel();
+        Modelo = new javax.swing.JLabel();
+        CampoLinea = new javax.swing.JTextField();
+        CampoModelo = new javax.swing.JTextField();
+        Cancelar = new javax.swing.JButton();
+        Año = new javax.swing.JLabel();
+        CampoAño = new javax.swing.JTextField();
+        Color = new javax.swing.JLabel();
+        CampoColor = new javax.swing.JTextField();
 
         CampoCurp3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -119,18 +122,18 @@ public class PlacasNuevoPanel extends javax.swing.JFrame {
 
         jPanel1.add(FondoGris4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, -1));
 
-        Curp.setBackground(new java.awt.Color(153, 153, 153));
-        Curp.setFont(new java.awt.Font("Roboto", 2, 18)); // NOI18N
-        Curp.setText("Linea");
-        Curp.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(Curp, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 190, 110, -1));
+        Linea.setBackground(new java.awt.Color(153, 153, 153));
+        Linea.setFont(new java.awt.Font("Roboto", 2, 18)); // NOI18N
+        Linea.setText("Linea");
+        Linea.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel1.add(Linea, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 190, 110, -1));
 
-        CampoCurp.addActionListener(new java.awt.event.ActionListener() {
+        CampoNoSerie.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CampoCurpActionPerformed(evt);
+                CampoNoSerieActionPerformed(evt);
             }
         });
-        jPanel1.add(CampoCurp, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 150, 161, -1));
+        jPanel1.add(CampoNoSerie, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 150, 161, -1));
 
         Aceptar.setBackground(new java.awt.Color(0, 255, 51));
         Aceptar.setFont(new java.awt.Font("Roboto Black", 3, 12)); // NOI18N
@@ -142,67 +145,67 @@ public class PlacasNuevoPanel extends javax.swing.JFrame {
         });
         jPanel1.add(Aceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 420, 112, 30));
 
-        Curp2.setBackground(new java.awt.Color(153, 153, 153));
-        Curp2.setFont(new java.awt.Font("Roboto", 2, 18)); // NOI18N
-        Curp2.setText("No. Serie");
-        Curp2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(Curp2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 110, -1));
+        NoSerie.setBackground(new java.awt.Color(153, 153, 153));
+        NoSerie.setFont(new java.awt.Font("Roboto", 2, 18)); // NOI18N
+        NoSerie.setText("No. Serie");
+        NoSerie.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel1.add(NoSerie, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 110, -1));
 
-        Curp3.setBackground(new java.awt.Color(153, 153, 153));
-        Curp3.setFont(new java.awt.Font("Roboto", 2, 18)); // NOI18N
-        Curp3.setText("Modelo");
-        Curp3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(Curp3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 230, 110, -1));
+        Modelo.setBackground(new java.awt.Color(153, 153, 153));
+        Modelo.setFont(new java.awt.Font("Roboto", 2, 18)); // NOI18N
+        Modelo.setText("Modelo");
+        Modelo.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel1.add(Modelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 230, 110, -1));
 
-        CampoCurp2.addActionListener(new java.awt.event.ActionListener() {
+        CampoLinea.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CampoCurp2ActionPerformed(evt);
+                CampoLineaActionPerformed(evt);
             }
         });
-        jPanel1.add(CampoCurp2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 190, 161, -1));
+        jPanel1.add(CampoLinea, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 190, 161, -1));
 
-        CampoCurp4.addActionListener(new java.awt.event.ActionListener() {
+        CampoModelo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CampoCurp4ActionPerformed(evt);
+                CampoModeloActionPerformed(evt);
             }
         });
-        jPanel1.add(CampoCurp4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 230, 161, -1));
+        jPanel1.add(CampoModelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 230, 161, -1));
 
-        Cancelar2.setBackground(new java.awt.Color(255, 0, 0));
-        Cancelar2.setFont(new java.awt.Font("Roboto Black", 3, 12)); // NOI18N
-        Cancelar2.setText("Cancelar");
-        Cancelar2.addActionListener(new java.awt.event.ActionListener() {
+        Cancelar.setBackground(new java.awt.Color(255, 0, 0));
+        Cancelar.setFont(new java.awt.Font("Roboto Black", 3, 12)); // NOI18N
+        Cancelar.setText("Cancelar");
+        Cancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Cancelar2ActionPerformed(evt);
+                CancelarActionPerformed(evt);
             }
         });
-        jPanel1.add(Cancelar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 420, 101, 30));
+        jPanel1.add(Cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 420, 101, 30));
 
-        Curp5.setBackground(new java.awt.Color(153, 153, 153));
-        Curp5.setFont(new java.awt.Font("Roboto", 2, 18)); // NOI18N
-        Curp5.setText("Año");
-        Curp5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(Curp5, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 310, 110, -1));
+        Año.setBackground(new java.awt.Color(153, 153, 153));
+        Año.setFont(new java.awt.Font("Roboto", 2, 18)); // NOI18N
+        Año.setText("Año");
+        Año.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel1.add(Año, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 310, 110, -1));
 
-        CampoCurp6.addActionListener(new java.awt.event.ActionListener() {
+        CampoAño.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CampoCurp6ActionPerformed(evt);
+                CampoAñoActionPerformed(evt);
             }
         });
-        jPanel1.add(CampoCurp6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 310, 161, -1));
+        jPanel1.add(CampoAño, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 310, 161, -1));
 
-        Curp6.setBackground(new java.awt.Color(153, 153, 153));
-        Curp6.setFont(new java.awt.Font("Roboto", 2, 18)); // NOI18N
-        Curp6.setText("Color");
-        Curp6.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(Curp6, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 270, 110, -1));
+        Color.setBackground(new java.awt.Color(153, 153, 153));
+        Color.setFont(new java.awt.Font("Roboto", 2, 18)); // NOI18N
+        Color.setText("Color");
+        Color.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel1.add(Color, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 270, 110, -1));
 
-        CampoCurp7.addActionListener(new java.awt.event.ActionListener() {
+        CampoColor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CampoCurp7ActionPerformed(evt);
+                CampoColorActionPerformed(evt);
             }
         });
-        jPanel1.add(CampoCurp7, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 270, 161, -1));
+        jPanel1.add(CampoColor, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 270, 161, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -219,39 +222,47 @@ public class PlacasNuevoPanel extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void CampoCurpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoCurpActionPerformed
+    private void CampoNoSerieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoNoSerieActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CampoCurpActionPerformed
+    }//GEN-LAST:event_CampoNoSerieActionPerformed
 
     private void AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarActionPerformed
+       String serie = CampoNoSerie.getText();
+       String linea = CampoLinea.getText();
+       String modelo = CampoModelo.getText();    
+       String color =  CampoColor.getText();
+       int año = Integer.getInteger(CampoAño.getText());
+       if (serie.isEmpty() || linea.isEmpty() || modelo.isEmpty() || color.isEmpty() || CampoAño.getText().isEmpty()) {
+    javax.swing.JOptionPane.showMessageDialog(this, "Todos los campos son obligatorios", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+}
         ValidarLicencia validar = new ValidarLicencia();
         validar.setVisible(true);
     }//GEN-LAST:event_AceptarActionPerformed
 
-    private void CampoCurp2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoCurp2ActionPerformed
+    private void CampoLineaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoLineaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CampoCurp2ActionPerformed
+    }//GEN-LAST:event_CampoLineaActionPerformed
 
     private void CampoCurp3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoCurp3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_CampoCurp3ActionPerformed
 
-    private void CampoCurp4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoCurp4ActionPerformed
+    private void CampoModeloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoModeloActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CampoCurp4ActionPerformed
+    }//GEN-LAST:event_CampoModeloActionPerformed
 
-    private void Cancelar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cancelar2ActionPerformed
+    private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed
         // Cerrar el JFrame actual
         this.dispose();
-    }//GEN-LAST:event_Cancelar2ActionPerformed
+    }//GEN-LAST:event_CancelarActionPerformed
 
-    private void CampoCurp6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoCurp6ActionPerformed
+    private void CampoAñoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoAñoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CampoCurp6ActionPerformed
+    }//GEN-LAST:event_CampoAñoActionPerformed
 
-    private void CampoCurp7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoCurp7ActionPerformed
+    private void CampoColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoColorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CampoCurp7ActionPerformed
+    }//GEN-LAST:event_CampoColorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -290,22 +301,22 @@ public class PlacasNuevoPanel extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Aceptar;
-    private javax.swing.JTextField CampoCurp;
-    private javax.swing.JTextField CampoCurp2;
+    private javax.swing.JLabel Año;
+    private javax.swing.JTextField CampoAño;
+    private javax.swing.JTextField CampoColor;
     private javax.swing.JTextField CampoCurp3;
-    private javax.swing.JTextField CampoCurp4;
     private javax.swing.JTextField CampoCurp5;
-    private javax.swing.JTextField CampoCurp6;
-    private javax.swing.JTextField CampoCurp7;
-    private javax.swing.JButton Cancelar2;
-    private javax.swing.JLabel Curp;
-    private javax.swing.JLabel Curp2;
-    private javax.swing.JLabel Curp3;
+    private javax.swing.JTextField CampoLinea;
+    private javax.swing.JTextField CampoModelo;
+    private javax.swing.JTextField CampoNoSerie;
+    private javax.swing.JButton Cancelar;
+    private javax.swing.JLabel Color;
     private javax.swing.JLabel Curp4;
-    private javax.swing.JLabel Curp5;
-    private javax.swing.JLabel Curp6;
     private javax.swing.JPanel FondoGris4;
     private javax.swing.JLabel FotoGobSonora;
+    private javax.swing.JLabel Linea;
+    private javax.swing.JLabel Modelo;
+    private javax.swing.JLabel NoSerie;
     private javax.swing.JLabel Opcional;
     private javax.swing.JLabel Opcional1;
     private javax.swing.JLabel jLabel4;

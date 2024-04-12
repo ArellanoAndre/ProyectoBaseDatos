@@ -5,15 +5,18 @@
 package Frames;
 
 import Tools.Imagen;
+import dto.PlacasDTO;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import negocio.GenerarTramitePlacasBO;
 
 /**
  *
  * @author Arell
  */
 public class PlacasUsadoPanel extends javax.swing.JFrame {
-
+private GenerarTramitePlacasBO licenciaBo;
+private PlacasDTO placa;
     /**
      * Creates new form PlacasUsadoPanel
      */
@@ -48,8 +51,8 @@ public class PlacasUsadoPanel extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         Cancelar1 = new javax.swing.JButton();
         Aceptar3 = new javax.swing.JButton();
-        CampoCurp1 = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
+        CampoPlacas = new javax.swing.JTextField();
+        PlacasAnteriores = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         Aceptar1 = new javax.swing.JButton();
 
@@ -148,15 +151,15 @@ public class PlacasUsadoPanel extends javax.swing.JFrame {
             }
         });
 
-        CampoCurp1.addActionListener(new java.awt.event.ActionListener() {
+        CampoPlacas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CampoCurp1ActionPerformed(evt);
+                CampoPlacasActionPerformed(evt);
             }
         });
 
-        jLabel3.setBackground(new java.awt.Color(204, 204, 204));
-        jLabel3.setFont(new java.awt.Font("Roboto", 2, 24)); // NOI18N
-        jLabel3.setText("Placas Anteriores:");
+        PlacasAnteriores.setBackground(new java.awt.Color(204, 204, 204));
+        PlacasAnteriores.setFont(new java.awt.Font("Roboto", 2, 24)); // NOI18N
+        PlacasAnteriores.setText("Placas Anteriores:");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -197,8 +200,8 @@ public class PlacasUsadoPanel extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(211, 211, 211)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel3)
-                        .addComponent(CampoCurp1, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(PlacasAnteriores)
+                        .addComponent(CampoPlacas, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addContainerGap(211, Short.MAX_VALUE)))
         );
@@ -218,9 +221,9 @@ public class PlacasUsadoPanel extends javax.swing.JFrame {
                     .addGap(162, 162, 162)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(PlacasAnteriores, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(CampoCurp1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CampoPlacas, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(209, Short.MAX_VALUE)))
         );
 
@@ -261,14 +264,19 @@ public class PlacasUsadoPanel extends javax.swing.JFrame {
     }//GEN-LAST:event_Cancelar1ActionPerformed
 
     private void Aceptar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Aceptar3ActionPerformed
+        String placa = CampoPlacas.getText();
+        if (placa.isEmpty()) {
+    javax.swing.JOptionPane.showMessageDialog(this, "El campo de la placa es obligatorio", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+}
+     //   placa = new PlacasDTO(placa);
         this.dispose();
         ValidarLicencia validar = new ValidarLicencia();
         validar.setVisible(true);
     }//GEN-LAST:event_Aceptar3ActionPerformed
 
-    private void CampoCurp1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoCurp1ActionPerformed
+    private void CampoPlacasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoPlacasActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CampoCurp1ActionPerformed
+    }//GEN-LAST:event_CampoPlacasActionPerformed
 
     private void Aceptar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Aceptar1ActionPerformed
         // TODO add your handling code here:
@@ -315,14 +323,14 @@ public class PlacasUsadoPanel extends javax.swing.JFrame {
     private javax.swing.JButton Aceptar1;
     private javax.swing.JButton Aceptar2;
     private javax.swing.JButton Aceptar3;
-    private javax.swing.JTextField CampoCurp1;
     private javax.swing.JTextField CampoCurp2;
+    private javax.swing.JTextField CampoPlacas;
     private javax.swing.JButton Cancelar;
     private javax.swing.JButton Cancelar1;
     private javax.swing.JLabel Curp2;
     private javax.swing.JPanel FondoGris4;
     private javax.swing.JLabel FotoGobSonora;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel PlacasAnteriores;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
